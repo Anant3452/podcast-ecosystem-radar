@@ -43,3 +43,7 @@ next-env.d.ts
 # allow the example env file
 !.env.example
 .claude/
+
+# agent skill files added by the Neon installer
+.agents/
+skills-lock.json
