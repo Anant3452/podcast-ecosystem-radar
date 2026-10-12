@@ -48,6 +48,7 @@ CREATE TABLE IF NOT EXISTS episodes (
   created_at     timestamptz NOT NULL DEFAULT now(),
   UNIQUE (show_id, guid)
 );
+ALTER TABLE episodes ADD COLUMN IF NOT EXISTS link_checked_at timestamptz;
 CREATE INDEX IF NOT EXISTS episodes_published_idx ON episodes (published_at DESC);
 CREATE INDEX IF NOT EXISTS episodes_pending_idx ON episodes (extracted_at) WHERE extracted_at IS NULL;
 

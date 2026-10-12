@@ -43,6 +43,8 @@ export type NormalizedEpisode = {
   published_at: Date;
   description: string;
   link: string | null;
+  /** Audio file URL; always present in podcast feeds and used if `link` is dead. */
+  enclosure_url: string | null;
   transcript_url: string | null;
 };
 
@@ -98,8 +100,54 @@ export function normalizeItem(raw: unknown): NormalizedEpisode | null {
     published_at: new Date(published),
     description: description.slice(0, MAX_NOTES),
     link: it.link || it.enclosure?.url || null,
+    enclosure_url: it.enclosure?.url || null,
     transcript_url: pickTranscript(it["podcast:transcript"]),
   };
+}
+
+/**
+ * Some feeds point at episode pages that no longer exist (e.g. retired
+ * podcasters.spotify.com URLs). Only 404/410 count as dead: bot blocks,
+ * timeouts and network errors keep the original link.
+ */
+export async function isDeadLink(url: string): Promise<boolean> {
+  try {
+    const res = await fetch(url, {
+      method: "GET",
+      redirect: "follow",
+      headers: { Range: "bytes=0-0", "User-Agent": "Mozilla/5.0 (PodcastEcosystemRadar link check)" },
+      signal: AbortSignal.timeout(8_000),
+    });
+    await res.body?.cancel();
+    return res.status === 404 || res.status === 410;
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Check each episode's link once (link_checked_at) and swap dead links for
+ * the audio file, so every citation in the brief opens something real.
+ */
+async function repairLinks(showId: string, episodes: NormalizedEpisode[]): Promise<number> {
+  const sql = await db();
+  const enclosures = new Map(episodes.map((e) => [e.guid, e.enclosure_url]));
+  const unchecked = await sql<{ id: string; guid: string; link: string | null }[]>`
+    SELECT id::text, guid, link FROM episodes WHERE show_id = ${showId} AND link_checked_at IS NULL`;
+  let repaired = 0;
+  for (let i = 0; i < unchecked.length; i += 6) {
+    await Promise.all(
+      unchecked.slice(i, i + 6).map(async (row) => {
+        const fallback = enclosures.get(row.guid) ?? null;
+        const dead = row.link ? await isDeadLink(row.link) : true;
+        const link = dead && fallback ? fallback : row.link;
+        if (link !== row.link) repaired++;
+        await sql`UPDATE episodes SET link = ${link}, link_checked_at = now() WHERE id = ${row.id}`;
+      }),
+    );
+  }
+  if (repaired) console.log(`[ingest] ${showId}: replaced ${repaired} dead episode link(s) with audio URLs`);
+  return repaired;
 }
 
 export type ShowIngestResult = {
@@ -134,6 +182,7 @@ export async function ingestShow(show: Show, now = new Date()): Promise<ShowInge
         RETURNING id`;
       added += rows.length;
     }
+    await repairLinks(show.id, unique);
     await sql`UPDATE shows SET last_fetched_at = now(), last_status = 'ok', last_error = NULL WHERE id = ${show.id}`;
     return { show_id: show.id, ok: true, fetched: feed.items?.length ?? 0, in_window: unique.length, added };
   } catch (err) {
