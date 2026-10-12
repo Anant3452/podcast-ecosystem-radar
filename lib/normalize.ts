@@ -72,9 +72,23 @@ export type Cluster<T> = {
 };
 
 /**
- * Group items whose normalized names are within `maxDistance` edits of each
- * other (single-link clustering via union-find). Short names (< 5 chars) must
- * match exactly, so "Ola" and "Oyo" don't collapse together.
+ * Edit-distance budget for a pair of normalized names. The full `maxDistance`
+ * (2) applies to names of 8+ characters ("Kunaal Shah" ~ "Kunal Shah");
+ * 5-7 character names get 1 edit ("Zepto" ~ "Zeptoo"); shorter names must
+ * match exactly ("Ola" vs "Oyo"). Two edits on a short word changes too much
+ * of it: "Intel" and "Airtel" are distance 2 but different companies.
+ */
+export function allowedDistance(a: string, b: string, maxDistance = 2): number {
+  const len = Math.min(a.length, b.length);
+  if (len < 5) return 0;
+  if (len < 8) return Math.min(1, maxDistance);
+  return maxDistance;
+}
+
+/**
+ * Group items whose normalized names are close (see `allowedDistance`), using
+ * single-link clustering via union-find. Merged names must also share their
+ * first character, which typos almost never change.
  */
 export function clusterByName<T>(
   items: T[],
@@ -94,8 +108,9 @@ export function clusterByName<T>(
     for (let j = i + 1; j < keys.length; j++) {
       const a = keys[i];
       const b = keys[j];
-      if (Math.min(a.length, b.length) < 5) continue;
-      if (levenshtein(a, b, maxDistance) <= maxDistance) {
+      const budget = allowedDistance(a, b, maxDistance);
+      if (budget === 0 || a[0] !== b[0]) continue;
+      if (levenshtein(a, b, budget) <= budget) {
         const ra = find(a);
         const rb = find(b);
         if (ra !== rb) parent.set(rb, ra);

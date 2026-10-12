@@ -65,6 +65,16 @@ describe("clusterByName", () => {
     expect(clusters[0].members).toHaveLength(3);
   });
 
+  it("does not merge distinct short brands two edits apart ('Intel' vs 'Airtel')", () => {
+    const clusters = clusterByName(names(["Intel", "Airtel"]), (x) => x.name, normalizeBrandName);
+    expect(clusters).toHaveLength(2);
+  });
+
+  it("allows one edit for 5-7 character names ('Zepto' ~ 'Zeptoo')", () => {
+    const clusters = clusterByName(names(["Zepto", "Zeptoo"]), (x) => x.name, normalizeBrandName);
+    expect(clusters).toHaveLength(1);
+  });
+
   it("does not merge short distinct names", () => {
     const clusters = clusterByName(names(["Ola", "Oyo", "Uber"]), (x) => x.name, normalizeBrandName);
     expect(clusters).toHaveLength(3);
@@ -76,7 +86,7 @@ describe("clusterByName", () => {
   });
 
   it("chains transitively (single link)", () => {
-    const clusters = clusterByName(names(["abcdefg", "abcdexy", "abcdzzy"]), (x) => x.name, (s) => s);
+    const clusters = clusterByName(names(["abcdefgh", "abcdefxy", "abcdezzy"]), (x) => x.name, (s) => s);
     expect(clusters).toHaveLength(1);
   });
 
