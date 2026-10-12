@@ -1,71 +1,129 @@
 @import "tailwindcss";
 
+/*
+ * Design tokens: dark-first. Near-black canvas, translucent layered
+ * surfaces, hairline borders that brighten on interaction, one warm accent.
+ */
 :root {
-  --paper: #f6f2ea;
-  --paper-2: #efe9dd;
-  --card: #fffdf8;
-  --ink: #1d1a16;
-  --ink-2: #4a443c;
-  --muted: #847b6f;
-  --line: #e2d9c8;
-  --guests: #c2410c;
-  --guests-soft: #fbe6d7;
-  --topics: #0f766e;
-  --topics-soft: #d5efe9;
-  --sponsors: #6d28d9;
-  --sponsors-soft: #e9e0fb;
-  --radar: #b45309;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #14120f;
-    --paper-2: #1b1814;
-    --card: #1f1c17;
-    --ink: #f1ebe0;
-    --ink-2: #cdc4b5;
-    --muted: #958b7c;
-    --line: #342e26;
-    --guests: #fb923c;
-    --guests-soft: #3a2416;
-    --topics: #2dd4bf;
-    --topics-soft: #13302b;
-    --sponsors: #a78bfa;
-    --sponsors-soft: #2a2140;
-    --radar: #f59e0b;
-  }
+  color-scheme: dark;
+  --bg: #0a0a0c;
+  --bg-raised: #121216;
+  --surface: rgba(255, 255, 255, 0.03);
+  --surface-hover: rgba(255, 255, 255, 0.05);
+  --surface-strong: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --text: #ededef;
+  --text-2: #b4b4bc;
+  --muted: #8a8a93;
+  --faint: #5c5c66;
+  --accent: #e08a5f; /* warm terracotta */
+  --accent-soft: rgba(224, 138, 95, 0.12);
+  --guests: #e5926a;
+  --guests-soft: rgba(229, 146, 106, 0.1);
+  --topics: #5cc8a8;
+  --topics-soft: rgba(92, 200, 168, 0.1);
+  --sponsors: #a99cf0;
+  --sponsors-soft: rgba(169, 156, 240, 0.1);
+  --danger: #f08a8a;
+  --danger-soft: rgba(240, 138, 138, 0.1);
 }
 
 @theme inline {
-  --color-paper: var(--paper);
-  --color-paper-2: var(--paper-2);
-  --color-card: var(--card);
-  --color-ink: var(--ink);
-  --color-ink-2: var(--ink-2);
+  --color-bg: var(--bg);
+  --color-bg-raised: var(--bg-raised);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-strong: var(--surface-strong);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
   --color-muted: var(--muted);
-  --color-line: var(--line);
+  --color-faint: var(--faint);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
   --color-guests: var(--guests);
   --color-guests-soft: var(--guests-soft);
   --color-topics: var(--topics);
   --color-topics-soft: var(--topics-soft);
   --color-sponsors: var(--sponsors);
   --color-sponsors-soft: var(--sponsors-soft);
-  --color-radar: var(--radar);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-fraunces);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  --ease-fluid: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--bg);
+  color: var(--text);
+  font-feature-settings: "ss01", "cv11";
 }
 
-/* Subtle radar rings behind the masthead. */
-.radar-rings {
-  background-image: repeating-radial-gradient(
-    circle at 100% 0%,
-    transparent 0 38px,
-    color-mix(in oklab, var(--radar) 14%, transparent) 38px 39px
-  );
+::selection {
+  background: rgba(224, 138, 95, 0.32);
+  color: #fff;
+}
+
+/* One consistent, high-contrast focus ring for keyboard users. */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* Full-width ambient glow at the top of every page; fades out at the bottom. */
+.ambient-glow {
+  background:
+    radial-gradient(45% 70% at 18% 0%, rgba(224, 138, 95, 0.13), transparent 70%),
+    radial-gradient(35% 55% at 88% 5%, rgba(92, 200, 168, 0.05), transparent 75%);
+  mask-image: linear-gradient(to bottom, #000 30%, transparent);
+}
+
+/* Soft warm glow inside panels; purely decorative. */
+.hero-glow {
+  background:
+    radial-gradient(60% 80% at 15% 0%, rgba(224, 138, 95, 0.14), transparent 60%),
+    radial-gradient(40% 60% at 90% 10%, rgba(92, 200, 168, 0.06), transparent 70%);
+}
+
+/* Entrance animation for sections and cards. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-rise {
+  animation: rise 600ms var(--ease-fluid) both;
+}
+
+/* <details> disclosure: hide the default marker everywhere. */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
