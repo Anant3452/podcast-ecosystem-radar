@@ -1,0 +1,20 @@
+{
+  "guest_window_days": 30,
+  "topic_window_days": 7,
+  "brand_window_days": 30,
+  "ingest_window_days": 35,
+  "recipients": [
+    "anantjain2809@gmail.com"
+  ],
+  "schedule": {
+    "description": "Every Monday 06:00 IST (00:30 UTC). The cron expression itself lives in vercel.json.",
+    "cron_utc": "30 0 * * 1",
+    "timezone": "Asia/Kolkata"
+  },
+  "gemini": {
+    "concurrency": 3,
+    "max_retries": 4,
+    "min_interval_ms": 2000,
+    "episodes_per_call": 5
+  }
+}

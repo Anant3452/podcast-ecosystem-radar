@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Abort the commit if any staged file contains a value from .env.local.
+exec "$(git rev-parse --show-toplevel)/scripts/check-secrets.sh" --staged

@@ -1,9 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  // Every page reads live data from Postgres, so we render per request
+  // (route-level `dynamic = "force-dynamic"`) instead of using Cache Components.
+  cacheComponents: false,
   turbopack: {
     rules: {
       "*.css": {

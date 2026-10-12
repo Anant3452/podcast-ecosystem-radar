@@ -1,0 +1,130 @@
+[
+  {
+    "id": "neon-show",
+    "name": "The Neon Show",
+    "rss_url": "https://rss.buzzsprout.com/1601695.rss",
+    "enabled": true,
+    "self_brands": [
+      "Neon Fund",
+      "The Neon Show",
+      "Neon"
+    ]
+  },
+  {
+    "id": "founder-thesis",
+    "name": "Founder Thesis",
+    "rss_url": "https://feeds.zencastr.com/f/mbqvPYFP.rss",
+    "enabled": true,
+    "self_brands": [
+      "Founder Thesis"
+    ]
+  },
+  {
+    "id": "prime-venture-partners",
+    "name": "Prime Venture Partners Podcast",
+    "rss_url": "https://feeds.captivate.fm/prime-venture-partners/",
+    "enabled": true,
+    "self_brands": [
+      "Prime Venture Partners",
+      "Prime Venture"
+    ]
+  },
+  {
+    "id": "figuring-out",
+    "name": "Figuring Out with Raj Shamani",
+    "rss_url": "https://anchor.fm/s/f5347ab0/podcast/rss",
+    "enabled": true,
+    "self_brands": [
+      "Figuring Out"
+    ]
+  },
+  {
+    "id": "paisa-vaisa",
+    "name": "Paisa Vaisa with Anupam Gupta",
+    "rss_url": "https://www.omnycontent.com/d/playlist/e0dce4b3-2eb8-48cb-822c-af1d00e03e20/b3d9fccc-662e-4aa7-a14a-af4e0097d44b/e2ba1850-2b92-4a77-b08f-af4e0097d46c/podcast.rss",
+    "enabled": true,
+    "self_brands": [
+      "Paisa Vaisa",
+      "IVM Podcasts"
+    ]
+  },
+  {
+    "id": "moneycontrol",
+    "name": "Moneycontrol Podcast",
+    "rss_url": "https://audioboom.com/channels/4937727.rss",
+    "enabled": true,
+    "self_brands": [
+      "Moneycontrol",
+      "Moneycontrol Pro"
+    ]
+  },
+  {
+    "id": "ranveer-show-hindi",
+    "name": "The Ranveer Show (Hindi)",
+    "rss_url": "https://anchor.fm/s/f5d53400/podcast/rss",
+    "enabled": true,
+    "self_brands": [
+      "The Ranveer Show",
+      "BeerBiceps",
+      "Monk Entertainment",
+      "Level Supermind"
+    ]
+  },
+  {
+    "id": "varun-mayya",
+    "name": "Varun Mayya",
+    "rss_url": "https://feeds.megaphone.fm/varun-mayya",
+    "enabled": true,
+    "self_brands": [
+      "Varun Mayya",
+      "Avalon Labs",
+      "Aeos"
+    ]
+  },
+  {
+    "id": "subtext-zerodha",
+    "name": "Subtext by Zerodha",
+    "rss_url": "https://feeds.simplecast.com/T8dZRBV1",
+    "enabled": true,
+    "self_brands": [
+      "Zerodha",
+      "Subtext",
+      "Rainmatter"
+    ]
+  },
+  {
+    "id": "daily-brief-zerodha",
+    "name": "The Daily Brief by Zerodha",
+    "rss_url": "https://feeds.simplecast.com/1H1JSMd0",
+    "enabled": true,
+    "self_brands": [
+      "Zerodha",
+      "The Daily Brief",
+      "Rainmatter"
+    ]
+  },
+  {
+    "id": "ranveer-show",
+    "name": "The Ranveer Show",
+    "rss_url": "https://feeds.simplecast.com/7PWFZi_d",
+    "enabled": false,
+    "self_brands": [
+      "The Ranveer Show",
+      "BeerBiceps",
+      "Monk Entertainment",
+      "Level Supermind"
+    ]
+  },
+  {
+    "id": "wtf-nikhil-kamath",
+    "name": "WTF is with Nikhil Kamath",
+    "rss_url": "https://feeds.hubhopper.com/664690fdea0d7a6f61a052da119934d3.rss",
+    "enabled": false,
+    "self_brands": [
+      "WTF",
+      "Zerodha",
+      "Gruhas",
+      "True Beacon"
+    ]
+  }
+]

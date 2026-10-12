@@ -1,0 +1,96 @@
+# Components Map: Podcast Ecosystem Radar
+
+Rendered image: [`components_map.png`](./components_map.png) (source: [`components_map.mmd`](./components_map.mmd)).
+
+![Components map](./components_map.png)
+
+## Components
+
+| Component | File(s) | Role |
+| --- | --- | --- |
+| Show config | `config/shows.json` | The monitored shows (`id`, `name`, `rss_url`, `enabled`, `self_brands`). Edit to change shows; no code changes. |
+| Run settings | `config/settings.json` | Guest/topic/brand windows (30/7/30 days), ingest window (35 days), recipients, Gemini rate limits. |
+| RSS ingestion | `lib/ingest.ts` | Fetches each enabled feed with `rss-parser`, Zod-validates items, keeps the last 35 days, dedupes by guid, inserts idempotently. |
+| Gemini extraction | `lib/extract.ts`, `lib/gemini.ts` | Gemini Flash in JSON mode with a response schema returns `guests`, `topics`, `brands` per episode (batched, several episodes per call). Zod-validated; retries 429/5xx with exponential backoff. |
+| Topic canonicalization | `lib/topics.ts` | One Gemini call per run maps the week's raw topic labels to canonical topics. |
+| Normalization | `lib/normalize.ts` | Deterministic name cleanup plus Levenshtein ≤ 2 clustering for guests and brands. |
+| Analysis | `lib/analyze.ts` | Deterministic `guest_overlap`, `topic_clusters`, `brand_signals`, each with source episode links. |
+| Brief generation | `lib/brief.ts` | Gemini Flash writes the headline and per-item insight and action, referencing analysis items by id. Code attaches shows and links, then renders Markdown and email HTML. |
+| Orchestrator | `lib/pipeline.ts` | Ingest → extract → canonicalize → analyze → brief → email, within a time budget. Logs every run to `runs`. |
+| Postgres | `lib/db.ts` | Tables `shows`, `episodes`, `topic_canon`, `briefs`, `runs` (Neon in production). |
+| Resend delivery | `lib/email.ts` | Sends the HTML brief to the recipients. |
+| Vercel Cron | `vercel.json`, `app/api/cron/weekly`, `app/api/cron/ingest` | Weekly brief every Monday 00:30 UTC (06:00 IST); daily ingest and extraction at 18:30 UTC. Both protected by `CRON_SECRET`. |
+| Web UI | `app/page.tsx`, `app/archive`, `app/shows` | Latest brief as cards with sources, archive of past briefs, monitored shows with counts. |
+| Admin trigger | `app/admin`, `app/api/admin/run` | "Run ingestion now" button protected by `ADMIN_SECRET`. |
+
+## Diagram source
+
+```mermaid
+flowchart LR
+  classDef config fill:#fdf3e1,stroke:#b45309,color:#1d1a16
+  classDef ai fill:#e9e0fb,stroke:#6d28d9,color:#1d1a16
+  classDef code fill:#d5efe9,stroke:#0f766e,color:#1d1a16
+  classDef store fill:#e7e2d9,stroke:#4a443c,color:#1d1a16
+  classDef ext fill:#fbe6d7,stroke:#c2410c,color:#1d1a16
+  classDef ui fill:#ffffff,stroke:#1d1a16,color:#1d1a16
+
+  subgraph Config["Config (no code changes)"]
+    SHOWS["config/shows.json<br/>10 shows · rss_url · enabled · self_brands"]:::config
+    SETTINGS["config/settings.json<br/>windows 30d/7d/30d · recipients · Gemini limits"]:::config
+  end
+
+  subgraph Triggers
+    CRONW["Vercel Cron<br/>Mon 00:30 UTC = 06:00 IST<br/>/api/cron/weekly"]:::ext
+    CROND["Vercel Cron<br/>daily 18:30 UTC<br/>/api/cron/ingest"]:::ext
+    ADMIN["/admin page<br/>Run ingestion now<br/>(ADMIN_SECRET)"]:::ui
+    ADMINAPI["/api/admin/run"]:::code
+  end
+
+  RSS["Live RSS feeds<br/>(10 podcasts)"]:::ext
+
+  subgraph Pipeline["lib/pipeline.ts (time-budgeted)"]
+    INGEST["lib/ingest.ts<br/>rss-parser · Zod · 35-day window<br/>dedupe by guid · idempotent"]:::code
+    EXTRACT["lib/extract.ts<br/>Gemini Flash JSON mode<br/>guests · topics · brands"]:::ai
+    TOPICS["lib/topics.ts<br/>1 Gemini call: canonical topic map"]:::ai
+    NORM["lib/normalize.ts<br/>name cleanup · Levenshtein ≤ 2<br/>guest + brand merging"]:::code
+    ANALYZE["lib/analyze.ts (deterministic)<br/>guest_overlap · topic_clusters<br/>brand_signals"]:::code
+    BRIEF["lib/brief.ts<br/>Gemini Flash writes prose by ref id<br/>code attaches episode links<br/>Markdown + HTML"]:::ai
+  end
+
+  GEMINI["Google Gemini API<br/>@google/genai · GEMINI_MODEL<br/>retry + backoff + rate limit"]:::ai
+  DB[("Postgres (Neon)<br/>shows · episodes · topic_canon<br/>briefs · runs")]:::store
+  RESEND["Resend<br/>HTML email"]:::ext
+  INBOX["Aditya's inbox<br/>before 7:00 AM IST"]:::ext
+
+  subgraph Web["Next.js web UI"]
+    HOME["/ latest brief<br/>3 card sections + sources"]:::ui
+    ARCHIVE["/archive + /archive/[week]"]:::ui
+    SHOWSPAGE["/shows<br/>episode counts · last processed"]:::ui
+  end
+
+  SHOWS --> INGEST
+  SETTINGS --> Pipeline
+  CRONW --> Pipeline
+  CROND --> INGEST
+  CROND --> EXTRACT
+  ADMIN --> ADMINAPI --> Pipeline
+
+  RSS --> INGEST --> DB
+  DB --> EXTRACT
+  EXTRACT <--> GEMINI
+  EXTRACT --> DB
+  DB --> TOPICS
+  TOPICS <--> GEMINI
+  TOPICS --> DB
+  DB --> ANALYZE
+  NORM --> ANALYZE
+  ANALYZE --> BRIEF
+  BRIEF <--> GEMINI
+  BRIEF --> DB
+  BRIEF --> RESEND --> INBOX
+
+  DB --> HOME
+  DB --> ARCHIVE
+  DB --> SHOWSPAGE
+  SHOWS --> SHOWSPAGE
+```

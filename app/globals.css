@@ -1,26 +1,71 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --paper: #f6f2ea;
+  --paper-2: #efe9dd;
+  --card: #fffdf8;
+  --ink: #1d1a16;
+  --ink-2: #4a443c;
+  --muted: #847b6f;
+  --line: #e2d9c8;
+  --guests: #c2410c;
+  --guests-soft: #fbe6d7;
+  --topics: #0f766e;
+  --topics-soft: #d5efe9;
+  --sponsors: #6d28d9;
+  --sponsors-soft: #e9e0fb;
+  --radar: #b45309;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --paper: #14120f;
+    --paper-2: #1b1814;
+    --card: #1f1c17;
+    --ink: #f1ebe0;
+    --ink-2: #cdc4b5;
+    --muted: #958b7c;
+    --line: #342e26;
+    --guests: #fb923c;
+    --guests-soft: #3a2416;
+    --topics: #2dd4bf;
+    --topics-soft: #13302b;
+    --sponsors: #a78bfa;
+    --sponsors-soft: #2a2140;
+    --radar: #f59e0b;
   }
 }
 
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-guests: var(--guests);
+  --color-guests-soft: var(--guests-soft);
+  --color-topics: var(--topics);
+  --color-topics-soft: var(--topics-soft);
+  --color-sponsors: var(--sponsors);
+  --color-sponsors-soft: var(--sponsors-soft);
+  --color-radar: var(--radar);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fraunces);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* Subtle radar rings behind the masthead. */
+.radar-rings {
+  background-image: repeating-radial-gradient(
+    circle at 100% 0%,
+    transparent 0 38px,
+    color-mix(in oklab, var(--radar) 14%, transparent) 38px 39px
+  );
 }
