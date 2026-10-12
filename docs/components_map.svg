@@ -1,189 +1,189 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1060" viewBox="0 0 1800 1060" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
-<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5c5c66"/></marker><filter id="soft" x="-20%" y="-20%" width="140%" height="160%"><feGaussianBlur stdDeviation="8"/></filter><radialGradient id="glowA" cx="15%" cy="0%" r="55%"><stop offset="0" stop-color="#e08a5f" stop-opacity=".16"/><stop offset="1" stop-color="#e08a5f" stop-opacity="0"/></radialGradient><radialGradient id="glowB" cx="88%" cy="4%" r="40%"><stop offset="0" stop-color="#5cc8a8" stop-opacity=".07"/><stop offset="1" stop-color="#5cc8a8" stop-opacity="0"/></radialGradient></defs>
-<rect width="1800" height="1060" fill="#0a0a0c"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#a1a1a6"/></marker><filter id="soft" x="-20%" y="-20%" width="140%" height="160%"><feGaussianBlur stdDeviation="8"/></filter><radialGradient id="glowA" cx="15%" cy="0%" r="55%"><stop offset="0" stop-color="#c8643a" stop-opacity="0.1"/><stop offset="1" stop-color="#c8643a" stop-opacity="0"/></radialGradient><radialGradient id="glowB" cx="88%" cy="4%" r="40%"><stop offset="0" stop-color="#1e9a78" stop-opacity="0.06"/><stop offset="1" stop-color="#1e9a78" stop-opacity="0"/></radialGradient></defs>
+<rect width="1800" height="1060" fill="#fbfbfd"/>
 <rect width="1800" height="1060" fill="url(#glowA)"/>
 <rect width="1800" height="1060" fill="url(#glowB)"/>
-<text x="50" y="62" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" letter-spacing="2.2" fill="#8a8a93">PODCAST ECOSYSTEM RADAR</text>
-<text x="50" y="108" font-size="40" font-weight="600" letter-spacing="-1.4" fill="#ededef">Components map<tspan fill="#8a8a93">, end to end.</tspan></text>
-<text x="50" y="140" font-size="15" fill="#8a8a93">10 live RSS feeds → Gemini extracts facts → code finds overlaps → Gemini writes → brief in the inbox by 6:00 AM IST Monday</text>
-<rect x="50" y="170" width="1696" height="778" rx="20" fill="#ffffff" fill-opacity=".025" stroke="rgba(255,255,255,0.08)"/>
+<text x="50" y="62" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="12" letter-spacing="2.2" fill="#86868b">PODCAST ECOSYSTEM RADAR</text>
+<text x="50" y="108" font-size="40" font-weight="600" letter-spacing="-1.4" fill="#1d1d1f">Components map<tspan fill="#86868b">, end to end.</tspan></text>
+<text x="50" y="140" font-size="15" fill="#86868b">10 live RSS feeds → Gemini extracts facts → code finds overlaps → Gemini writes → brief in the inbox by 6:00 AM IST Monday</text>
+<rect x="50" y="170" width="1696" height="778" rx="20" fill="#ffffff" fill-opacity="0.9" stroke="rgba(0,0,0,0.08)"/>
 <clipPath id="tbl"><rect x="50" y="170" width="1696" height="778" rx="20"/></clipPath>
-<line x1="50" y1="220" x2="1746" y2="220" stroke="rgba(255,255,255,0.08)"/>
-<text x="135.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#8a8a93">ACTOR</text>
-<text x="329.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#8a8a93">TRIGGER</text>
-<text x="547.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#8a8a93">INPUT</text>
-<text x="765.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#8a8a93">CONTEXT</text>
-<text x="983.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#8a8a93">AI · EXTRACT</text>
-<text x="1201.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#8a8a93">PROCESSING</text>
-<text x="1419.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#8a8a93">AI · WRITE</text>
-<text x="1637.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#8a8a93">OUTPUT</text>
+<line x1="50" y1="220" x2="1746" y2="220" stroke="rgba(0,0,0,0.08)"/>
+<text x="135.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#86868b">ACTOR</text>
+<text x="329.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#86868b">TRIGGER</text>
+<text x="547.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#86868b">INPUT</text>
+<text x="765.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#86868b">CONTEXT</text>
+<text x="983.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#86868b">AI · EXTRACT</text>
+<text x="1201.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#86868b">PROCESSING</text>
+<text x="1419.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#86868b">AI · WRITE</text>
+<text x="1637.0" y="200" text-anchor="middle" font-family="ui-monospace, 'SF Mono', Menlo, Consolas, monospace" font-size="11" letter-spacing="1.8" fill="#86868b">OUTPUT</text>
 <g clip-path="url(#tbl)">
-<rect x="220" y="220" width="1526" height="104" fill="#e08a5f" fill-opacity="0.035"/>
-<rect x="50" y="220" width="170" height="104" fill="#ffffff" fill-opacity=".02"/>
-<rect x="68" y="256.0" width="2.5" height="32" rx="1.25" fill="#e08a5f"/>
-<line x1="50" y1="324" x2="1746" y2="324" stroke="rgba(255,255,255,0.08)"/>
-<text x="84" y="270.0" font-size="15" font-weight="600" letter-spacing="-0.2" fill="#ededef">Aditya</text>
-<text x="84" y="288.0" font-size="11" fill="#8a8a93">Podcast host</text>
-<rect x="220" y="324" width="1526" height="104" fill="#8ea4d2" fill-opacity="0.02"/>
-<rect x="50" y="324" width="170" height="104" fill="#ffffff" fill-opacity=".02"/>
-<rect x="68" y="360.0" width="2.5" height="32" rx="1.25" fill="#8ea4d2"/>
-<line x1="50" y1="428" x2="1746" y2="428" stroke="rgba(255,255,255,0.08)"/>
-<text x="84" y="374.0" font-size="15" font-weight="600" letter-spacing="-0.2" fill="#ededef">Vercel Cron</text>
-<text x="84" y="392.0" font-size="11" fill="#8a8a93">Scheduler + admin</text>
-<rect x="220" y="428" width="1526" height="104" fill="#5cc8a8" fill-opacity="0.035"/>
-<rect x="50" y="428" width="170" height="104" fill="#ffffff" fill-opacity=".02"/>
-<rect x="68" y="464.0" width="2.5" height="32" rx="1.25" fill="#5cc8a8"/>
-<line x1="50" y1="532" x2="1746" y2="532" stroke="rgba(255,255,255,0.08)"/>
-<text x="84" y="478.0" font-size="15" font-weight="600" letter-spacing="-0.2" fill="#ededef">RSS Feeds</text>
-<text x="84" y="496.0" font-size="11" fill="#8a8a93">Live data</text>
-<rect x="220" y="532" width="1526" height="104" fill="#6fb3c2" fill-opacity="0.02"/>
-<rect x="50" y="532" width="170" height="104" fill="#ffffff" fill-opacity=".02"/>
-<rect x="68" y="568.0" width="2.5" height="32" rx="1.25" fill="#6fb3c2"/>
-<line x1="50" y1="636" x2="1746" y2="636" stroke="rgba(255,255,255,0.08)"/>
-<text x="84" y="582.0" font-size="15" font-weight="600" letter-spacing="-0.2" fill="#ededef">Postgres</text>
-<text x="84" y="600.0" font-size="11" fill="#8a8a93">Neon · memory</text>
-<rect x="220" y="636" width="1526" height="104" fill="#e5b06a" fill-opacity="0.035"/>
-<rect x="50" y="636" width="170" height="104" fill="#ffffff" fill-opacity=".02"/>
-<rect x="68" y="672.0" width="2.5" height="32" rx="1.25" fill="#e5b06a"/>
-<line x1="50" y1="740" x2="1746" y2="740" stroke="rgba(255,255,255,0.08)"/>
-<text x="84" y="686.0" font-size="15" font-weight="600" letter-spacing="-0.2" fill="#ededef">Code</text>
-<text x="84" y="704.0" font-size="11" fill="#8a8a93">Next.js server</text>
-<rect x="220" y="740" width="1526" height="104" fill="#a99cf0" fill-opacity="0.02"/>
-<rect x="50" y="740" width="170" height="104" fill="#ffffff" fill-opacity=".02"/>
-<rect x="68" y="776.0" width="2.5" height="32" rx="1.25" fill="#a99cf0"/>
-<line x1="50" y1="844" x2="1746" y2="844" stroke="rgba(255,255,255,0.08)"/>
-<text x="84" y="790.0" font-size="15" font-weight="600" letter-spacing="-0.2" fill="#ededef">Gemini API</text>
-<text x="84" y="808.0" font-size="11" fill="#8a8a93">Flash · language</text>
-<rect x="220" y="844" width="1526" height="104" fill="#e5926a" fill-opacity="0.035"/>
-<rect x="50" y="844" width="170" height="104" fill="#ffffff" fill-opacity=".02"/>
-<rect x="68" y="880.0" width="2.5" height="32" rx="1.25" fill="#e5926a"/>
-<text x="84" y="894.0" font-size="15" font-weight="600" letter-spacing="-0.2" fill="#ededef">Delivery</text>
-<text x="84" y="912.0" font-size="11" fill="#8a8a93">Resend + web UI</text>
+<rect x="220" y="220" width="1526" height="104" fill="#c8643a" fill-opacity="0.045"/>
+<rect x="50" y="220" width="170" height="104" fill="#000000" fill-opacity="0.015"/>
+<rect x="68" y="256.0" width="2.5" height="32" rx="1.25" fill="#c8643a"/>
+<line x1="50" y1="324" x2="1746" y2="324" stroke="rgba(0,0,0,0.08)"/>
+<text x="84" y="270.0" font-size="15" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Aditya</text>
+<text x="84" y="288.0" font-size="11" fill="#86868b">Podcast host</text>
+<rect x="220" y="324" width="1526" height="104" fill="#4a6fb5" fill-opacity="0.025"/>
+<rect x="50" y="324" width="170" height="104" fill="#000000" fill-opacity="0.015"/>
+<rect x="68" y="360.0" width="2.5" height="32" rx="1.25" fill="#4a6fb5"/>
+<line x1="50" y1="428" x2="1746" y2="428" stroke="rgba(0,0,0,0.08)"/>
+<text x="84" y="374.0" font-size="15" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Vercel Cron</text>
+<text x="84" y="392.0" font-size="11" fill="#86868b">Scheduler + admin</text>
+<rect x="220" y="428" width="1526" height="104" fill="#1e9a78" fill-opacity="0.045"/>
+<rect x="50" y="428" width="170" height="104" fill="#000000" fill-opacity="0.015"/>
+<rect x="68" y="464.0" width="2.5" height="32" rx="1.25" fill="#1e9a78"/>
+<line x1="50" y1="532" x2="1746" y2="532" stroke="rgba(0,0,0,0.08)"/>
+<text x="84" y="478.0" font-size="15" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">RSS Feeds</text>
+<text x="84" y="496.0" font-size="11" fill="#86868b">Live data</text>
+<rect x="220" y="532" width="1526" height="104" fill="#2b8597" fill-opacity="0.025"/>
+<rect x="50" y="532" width="170" height="104" fill="#000000" fill-opacity="0.015"/>
+<rect x="68" y="568.0" width="2.5" height="32" rx="1.25" fill="#2b8597"/>
+<line x1="50" y1="636" x2="1746" y2="636" stroke="rgba(0,0,0,0.08)"/>
+<text x="84" y="582.0" font-size="15" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Postgres</text>
+<text x="84" y="600.0" font-size="11" fill="#86868b">Neon · memory</text>
+<rect x="220" y="636" width="1526" height="104" fill="#b67a1c" fill-opacity="0.045"/>
+<rect x="50" y="636" width="170" height="104" fill="#000000" fill-opacity="0.015"/>
+<rect x="68" y="672.0" width="2.5" height="32" rx="1.25" fill="#b67a1c"/>
+<line x1="50" y1="740" x2="1746" y2="740" stroke="rgba(0,0,0,0.08)"/>
+<text x="84" y="686.0" font-size="15" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Code</text>
+<text x="84" y="704.0" font-size="11" fill="#86868b">Next.js server</text>
+<rect x="220" y="740" width="1526" height="104" fill="#6b57d1" fill-opacity="0.025"/>
+<rect x="50" y="740" width="170" height="104" fill="#000000" fill-opacity="0.015"/>
+<rect x="68" y="776.0" width="2.5" height="32" rx="1.25" fill="#6b57d1"/>
+<line x1="50" y1="844" x2="1746" y2="844" stroke="rgba(0,0,0,0.08)"/>
+<text x="84" y="790.0" font-size="15" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Gemini API</text>
+<text x="84" y="808.0" font-size="11" fill="#86868b">Flash · language</text>
+<rect x="220" y="844" width="1526" height="104" fill="#c25a3c" fill-opacity="0.045"/>
+<rect x="50" y="844" width="170" height="104" fill="#000000" fill-opacity="0.015"/>
+<rect x="68" y="880.0" width="2.5" height="32" rx="1.25" fill="#c25a3c"/>
+<text x="84" y="894.0" font-size="15" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Delivery</text>
+<text x="84" y="912.0" font-size="11" fill="#86868b">Resend + web UI</text>
 </g>
-<line x1="220" y1="170" x2="220" y2="948" stroke="rgba(255,255,255,0.08)"/>
-<line x1="438" y1="220" x2="438" y2="948" stroke="#ffffff" stroke-opacity=".035"/>
-<line x1="656" y1="220" x2="656" y2="948" stroke="#ffffff" stroke-opacity=".035"/>
-<line x1="874" y1="220" x2="874" y2="948" stroke="#ffffff" stroke-opacity=".035"/>
-<line x1="1092" y1="220" x2="1092" y2="948" stroke="#ffffff" stroke-opacity=".035"/>
-<line x1="1310" y1="220" x2="1310" y2="948" stroke="#ffffff" stroke-opacity=".035"/>
-<line x1="1528" y1="220" x2="1528" y2="948" stroke="#ffffff" stroke-opacity=".035"/>
-<rect x="230.0" y="234.0" width="198" height="88" rx="14" fill="#000" opacity=".35" filter="url(#soft)"/>
-<rect x="230.0" y="228.0" width="198" height="88" rx="14" fill="#121216"/>
-<rect x="230.0" y="228.0" width="198" height="88" rx="14" fill="#e08a5f" fill-opacity=".06" stroke="#e08a5f" stroke-opacity=".45" stroke-width="1"/>
-<circle cx="414.0" cy="242.0" r="3" fill="#e08a5f" fill-opacity=".9"/>
-<text x="329.0" y="250.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#ededef">Edits config (no code)</text>
-<text x="329.0" y="268.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">config/shows.json · 10 shows</text>
-<text x="329.0" y="283.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">enabled · self_brands</text>
-<text x="329.0" y="298.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">settings.json · 30d / 7d windows</text>
-<rect x="230.0" y="338.0" width="198" height="88" rx="14" fill="#000" opacity=".35" filter="url(#soft)"/>
-<rect x="230.0" y="332.0" width="198" height="88" rx="14" fill="#121216"/>
-<rect x="230.0" y="332.0" width="198" height="88" rx="14" fill="#8ea4d2" fill-opacity=".06" stroke="#8ea4d2" stroke-opacity=".45" stroke-width="1"/>
-<circle cx="414.0" cy="346.0" r="3" fill="#8ea4d2" fill-opacity=".9"/>
-<text x="329.0" y="354.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#ededef">Cron fires</text>
-<text x="329.0" y="372.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">Mon 00:30 UTC = 06:00 IST</text>
-<text x="329.0" y="387.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">daily ingest at 00:00 IST</text>
-<text x="329.0" y="402.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">/admin “Run now” · ADMIN_SECRET</text>
-<rect x="448.0" y="442.0" width="198" height="88" rx="14" fill="#000" opacity=".35" filter="url(#soft)"/>
-<rect x="448.0" y="436.0" width="198" height="88" rx="14" fill="#121216"/>
-<rect x="448.0" y="436.0" width="198" height="88" rx="14" fill="#5cc8a8" fill-opacity=".06" stroke="#5cc8a8" stroke-opacity=".45" stroke-width="1"/>
-<circle cx="632.0" cy="450.0" r="3" fill="#5cc8a8" fill-opacity=".9"/>
-<text x="547.0" y="458.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#ededef">Fetches 10 feeds</text>
-<text x="547.0" y="476.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">rss-parser · Zod-validated</text>
-<text x="547.0" y="491.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">last 35 days · dedupe by guid</text>
-<text x="547.0" y="506.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">title · notes · link · transcript</text>
-<rect x="666.0" y="546.0" width="198" height="88" rx="14" fill="#000" opacity=".35" filter="url(#soft)"/>
-<rect x="666.0" y="540.0" width="198" height="88" rx="14" fill="#121216"/>
-<rect x="666.0" y="540.0" width="198" height="88" rx="14" fill="#6fb3c2" fill-opacity=".06" stroke="#6fb3c2" stroke-opacity=".45" stroke-width="1"/>
-<circle cx="850.0" cy="554.0" r="3" fill="#6fb3c2" fill-opacity=".9"/>
-<text x="765.0" y="562.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#ededef">Stores everything</text>
-<text x="765.0" y="580.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">shows · episodes · topic_canon</text>
-<text x="765.0" y="595.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">briefs by week · runs log</text>
-<text x="765.0" y="610.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">idempotent: skips processed</text>
-<rect x="884.0" y="754.0" width="198" height="88" rx="14" fill="#000" opacity=".35" filter="url(#soft)"/>
-<rect x="884.0" y="748.0" width="198" height="88" rx="14" fill="#121216"/>
-<rect x="884.0" y="748.0" width="198" height="88" rx="14" fill="#a99cf0" fill-opacity=".06" stroke="#a99cf0" stroke-opacity=".45" stroke-width="1"/>
-<circle cx="1068.0" cy="762.0" r="3" fill="#a99cf0" fill-opacity=".9"/>
-<text x="983.0" y="770.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#ededef">Extracts facts</text>
-<text x="983.0" y="788.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">guests · 2–5 topics · brands</text>
-<text x="983.0" y="803.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">JSON schema · empty &gt; guess</text>
-<text x="983.0" y="818.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">5 episodes/call · retry+backoff</text>
-<rect x="1102.0" y="650.0" width="198" height="88" rx="14" fill="#000" opacity=".35" filter="url(#soft)"/>
-<rect x="1102.0" y="644.0" width="198" height="88" rx="14" fill="#121216"/>
-<rect x="1102.0" y="644.0" width="198" height="88" rx="14" fill="#e5b06a" fill-opacity=".06" stroke="#e5b06a" stroke-opacity=".45" stroke-width="1"/>
-<circle cx="1286.0" cy="658.0" r="3" fill="#e5b06a" fill-opacity=".9"/>
-<text x="1201.0" y="666.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#ededef">Code does the maths</text>
-<text x="1201.0" y="684.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">names merged: Levenshtein ≤ 2</text>
-<text x="1201.0" y="699.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">guests on ≥ 2 shows · 30 days</text>
-<text x="1201.0" y="714.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">topics ≥ 2 shows · 7d · paid brands</text>
-<rect x="1320.0" y="754.0" width="198" height="88" rx="14" fill="#000" opacity=".35" filter="url(#soft)"/>
-<rect x="1320.0" y="748.0" width="198" height="88" rx="14" fill="#121216"/>
-<rect x="1320.0" y="748.0" width="198" height="88" rx="14" fill="#a99cf0" fill-opacity=".06" stroke="#a99cf0" stroke-opacity=".45" stroke-width="1"/>
-<circle cx="1504.0" cy="762.0" r="3" fill="#a99cf0" fill-opacity=".9"/>
-<text x="1419.0" y="770.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#ededef">Writes the brief</text>
-<text x="1419.0" y="788.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">1 call merges topic labels</text>
-<text x="1419.0" y="803.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">3-line summary + next steps</text>
-<text x="1419.0" y="818.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">cites items by ref id only</text>
-<rect x="1538.0" y="650.0" width="198" height="88" rx="14" fill="#000" opacity=".35" filter="url(#soft)"/>
-<rect x="1538.0" y="644.0" width="198" height="88" rx="14" fill="#121216"/>
-<rect x="1538.0" y="644.0" width="198" height="88" rx="14" fill="#e5b06a" fill-opacity=".06" stroke="#e5b06a" stroke-opacity=".45" stroke-width="1"/>
-<circle cx="1722.0" cy="658.0" r="3" fill="#e5b06a" fill-opacity=".9"/>
-<text x="1637.0" y="666.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#ededef">Renders the brief</text>
-<text x="1637.0" y="684.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">code attaches episode links</text>
-<text x="1637.0" y="699.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">Markdown + email HTML</text>
-<text x="1637.0" y="714.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">saved to Postgres by week</text>
-<rect x="1538.0" y="858.0" width="198" height="88" rx="14" fill="#000" opacity=".35" filter="url(#soft)"/>
-<rect x="1538.0" y="852.0" width="198" height="88" rx="14" fill="#121216"/>
-<rect x="1538.0" y="852.0" width="198" height="88" rx="14" fill="#e5926a" fill-opacity=".06" stroke="#e5926a" stroke-opacity=".45" stroke-width="1"/>
-<circle cx="1722.0" cy="866.0" r="3" fill="#e5926a" fill-opacity=".9"/>
-<text x="1637.0" y="874.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#ededef">Delivers</text>
-<text x="1637.0" y="892.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">Resend email to inbox</text>
-<text x="1637.0" y="907.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">web: / · /archive · /shows</text>
-<text x="1637.0" y="922.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">every item links to sources</text>
-<rect x="1538.0" y="234.0" width="198" height="88" rx="14" fill="#000" opacity=".35" filter="url(#soft)"/>
-<rect x="1538.0" y="228.0" width="198" height="88" rx="14" fill="#121216"/>
-<rect x="1538.0" y="228.0" width="198" height="88" rx="14" fill="#e08a5f" fill-opacity=".06" stroke="#e08a5f" stroke-opacity=".45" stroke-width="1"/>
-<circle cx="1722.0" cy="242.0" r="3" fill="#e08a5f" fill-opacity=".9"/>
-<text x="1637.0" y="250.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#ededef">Reads the Monday brief</text>
-<text x="1637.0" y="268.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">book guests on media rounds</text>
-<text x="1637.0" y="283.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">ride or counter topics</text>
-<text x="1637.0" y="298.0" text-anchor="middle" font-size="10.5" fill="#b4b4bc">build the sponsor pitch list</text>
-<path d="M428.0,272.0 H587.0 V436.0" fill="none" stroke="#5c5c66" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
-<g><rect x="470.9" y="262.0" width="54.2" height="20" rx="10" fill="#121216" stroke="rgba(255,255,255,0.16)"/><text x="498.0" y="275.6" text-anchor="middle" font-size="10" fill="#b4b4bc">10 shows</text></g>
-<path d="M428.0,376.0 H507.0 V436.0" fill="none" stroke="#5c5c66" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
-<g><rect x="438.15" y="366.0" width="83.7" height="20" rx="10" fill="#121216" stroke="rgba(255,255,255,0.16)"/><text x="480.0" y="379.6" text-anchor="middle" font-size="10" fill="#b4b4bc">runs pipeline</text></g>
-<path d="M646.0,480.0 H765.0 V540.0" fill="none" stroke="#5c5c66" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
-<g><rect x="665.1" y="470.0" width="77.80000000000001" height="20" rx="10" fill="#121216" stroke="rgba(255,255,255,0.16)"/><text x="704.0" y="483.6" text-anchor="middle" font-size="10" fill="#b4b4bc">new episodes</text></g>
-<path d="M805.0,628.0 V792.0 H884.0" fill="none" stroke="#5c5c66" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
-<g><rect x="754.3" y="706.0" width="101.4" height="20" rx="10" fill="#121216" stroke="rgba(255,255,255,0.16)"/><text x="805.0" y="719.6" text-anchor="middle" font-size="10" fill="#b4b4bc">unprocessed only</text></g>
-<path d="M1082.0,792.0 H1201.0 V732.0" fill="none" stroke="#5c5c66" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
-<g><rect x="1097.2" y="782.0" width="89.60000000000001" height="20" rx="10" fill="#121216" stroke="rgba(255,255,255,0.16)"/><text x="1142.0" y="795.6" text-anchor="middle" font-size="10" fill="#b4b4bc">validated JSON</text></g>
-<path d="M1300.0,688.0 H1419.0 V748.0" fill="none" stroke="#5c5c66" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
-<g><rect x="1303.4" y="678.0" width="113.2" height="20" rx="10" fill="#121216" stroke="rgba(255,255,255,0.16)"/><text x="1360.0" y="691.6" text-anchor="middle" font-size="10" fill="#b4b4bc">analysis + ref ids</text></g>
-<path d="M1518.0,792.0 H1577.0 V732.0" fill="none" stroke="#5c5c66" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
-<g><rect x="1538.1" y="740.0" width="77.80000000000001" height="20" rx="10" fill="#121216" stroke="rgba(255,255,255,0.16)"/><text x="1577.0" y="753.6" text-anchor="middle" font-size="10" fill="#b4b4bc">prose by ref</text></g>
-<path d="M1637.0,732.0 V852.0" fill="none" stroke="#5c5c66" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
-<g><rect x="1624.0" y="782.0" width="66.0" height="20" rx="10" fill="#121216" stroke="rgba(255,255,255,0.16)"/><text x="1657.0" y="795.6" text-anchor="middle" font-size="10" fill="#b4b4bc">HTML brief</text></g>
-<path d="M1736.0,896.0 H1768 V272.0 H1739.0" fill="none" stroke="#5c5c66" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
-<g transform="rotate(-90 1768 584.0)"><rect x="1723.2" y="574.0" width="89.60000000000001" height="20" rx="10" fill="#121216" stroke="rgba(255,255,255,0.16)"/><text x="1768" y="587.6" text-anchor="middle" font-size="10" fill="#b4b4bc">by 6:00 AM IST</text></g>
-<path d="M864.0,584.0 H1201.0 V644.0" fill="none" stroke="#5c5c66" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
-<g><rect x="990.65" y="574.0" width="83.7" height="20" rx="10" fill="#121216" stroke="rgba(255,255,255,0.16)"/><text x="1032.5" y="587.6" text-anchor="middle" font-size="10" fill="#b4b4bc">35-day window</text></g>
-<rect x="299.4" y="974" width="159.39999999999998" height="28" rx="14" fill="#e5b06a" fill-opacity=".1" stroke="#e5b06a" stroke-opacity=".3"/>
-<circle cx="314.4" cy="988" r="3" fill="#e5b06a"/>
-<text x="324.4" y="992" font-size="12" font-weight="500" fill="#b4b4bc">Code does the maths</text>
-<rect x="470.79999999999995" y="974" width="232.0" height="28" rx="14" fill="#a99cf0" fill-opacity=".1" stroke="#a99cf0" stroke-opacity=".3"/>
-<circle cx="485.79999999999995" cy="988" r="3" fill="#a99cf0"/>
-<text x="495.79999999999995" y="992" font-size="12" font-weight="500" fill="#b4b4bc">Gemini Flash does the language</text>
-<rect x="714.8" y="974" width="152.8" height="28" rx="14" fill="#6fb3c2" fill-opacity=".1" stroke="#6fb3c2" stroke-opacity=".3"/>
-<circle cx="729.8" cy="988" r="3" fill="#6fb3c2"/>
-<text x="739.8" y="992" font-size="12" font-weight="500" fill="#b4b4bc">Postgres remembers</text>
-<rect x="879.5999999999999" y="974" width="172.6" height="28" rx="14" fill="#5cc8a8" fill-opacity=".1" stroke="#5cc8a8" stroke-opacity=".3"/>
-<circle cx="894.5999999999999" cy="988" r="3" fill="#5cc8a8"/>
-<text x="904.5999999999999" y="992" font-size="12" font-weight="500" fill="#b4b4bc">Live RSS, no scraping</text>
-<rect x="1064.1999999999998" y="974" width="146.2" height="28" rx="14" fill="#e08a5f" fill-opacity=".1" stroke="#e08a5f" stroke-opacity=".3"/>
-<circle cx="1079.1999999999998" cy="988" r="3" fill="#e08a5f"/>
-<text x="1089.1999999999998" y="992" font-size="12" font-weight="500" fill="#b4b4bc">Aditya acts on it</text>
-<rect x="1222.3999999999999" y="974" width="278.2" height="28" rx="14" fill="#e5926a" fill-opacity=".1" stroke="#e5926a" stroke-opacity=".3"/>
-<circle cx="1237.3999999999999" cy="988" r="3" fill="#e5926a"/>
-<text x="1247.3999999999999" y="992" font-size="12" font-weight="500" fill="#b4b4bc">Every claim links to a source episode</text>
-<text x="900.0" y="1030" text-anchor="middle" font-size="11.5" fill="#5c5c66">Next.js 16 on Vercel · Neon Postgres · Google Gemini Flash (@google/genai) · Resend · Vercel Cron</text>
+<line x1="220" y1="170" x2="220" y2="948" stroke="rgba(0,0,0,0.08)"/>
+<line x1="438" y1="220" x2="438" y2="948" stroke="#000000" stroke-opacity="0.04"/>
+<line x1="656" y1="220" x2="656" y2="948" stroke="#000000" stroke-opacity="0.04"/>
+<line x1="874" y1="220" x2="874" y2="948" stroke="#000000" stroke-opacity="0.04"/>
+<line x1="1092" y1="220" x2="1092" y2="948" stroke="#000000" stroke-opacity="0.04"/>
+<line x1="1310" y1="220" x2="1310" y2="948" stroke="#000000" stroke-opacity="0.04"/>
+<line x1="1528" y1="220" x2="1528" y2="948" stroke="#000000" stroke-opacity="0.04"/>
+<rect x="230.0" y="234.0" width="198" height="88" rx="14" fill="#000" opacity="0.07" filter="url(#soft)"/>
+<rect x="230.0" y="228.0" width="198" height="88" rx="14" fill="#ffffff"/>
+<rect x="230.0" y="228.0" width="198" height="88" rx="14" fill="#c8643a" fill-opacity="0.045" stroke="#c8643a" stroke-opacity="0.4" stroke-width="1"/>
+<circle cx="414.0" cy="242.0" r="3" fill="#c8643a" fill-opacity=".9"/>
+<text x="329.0" y="250.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Edits config (no code)</text>
+<text x="329.0" y="268.0" text-anchor="middle" font-size="10.5" fill="#48484f">config/shows.json · 10 shows</text>
+<text x="329.0" y="283.0" text-anchor="middle" font-size="10.5" fill="#48484f">enabled · self_brands</text>
+<text x="329.0" y="298.0" text-anchor="middle" font-size="10.5" fill="#48484f">settings.json · 30d / 7d windows</text>
+<rect x="230.0" y="338.0" width="198" height="88" rx="14" fill="#000" opacity="0.07" filter="url(#soft)"/>
+<rect x="230.0" y="332.0" width="198" height="88" rx="14" fill="#ffffff"/>
+<rect x="230.0" y="332.0" width="198" height="88" rx="14" fill="#4a6fb5" fill-opacity="0.045" stroke="#4a6fb5" stroke-opacity="0.4" stroke-width="1"/>
+<circle cx="414.0" cy="346.0" r="3" fill="#4a6fb5" fill-opacity=".9"/>
+<text x="329.0" y="354.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Cron fires</text>
+<text x="329.0" y="372.0" text-anchor="middle" font-size="10.5" fill="#48484f">Mon 00:30 UTC = 06:00 IST</text>
+<text x="329.0" y="387.0" text-anchor="middle" font-size="10.5" fill="#48484f">daily ingest at 00:00 IST</text>
+<text x="329.0" y="402.0" text-anchor="middle" font-size="10.5" fill="#48484f">/admin “Run now” · ADMIN_SECRET</text>
+<rect x="448.0" y="442.0" width="198" height="88" rx="14" fill="#000" opacity="0.07" filter="url(#soft)"/>
+<rect x="448.0" y="436.0" width="198" height="88" rx="14" fill="#ffffff"/>
+<rect x="448.0" y="436.0" width="198" height="88" rx="14" fill="#1e9a78" fill-opacity="0.045" stroke="#1e9a78" stroke-opacity="0.4" stroke-width="1"/>
+<circle cx="632.0" cy="450.0" r="3" fill="#1e9a78" fill-opacity=".9"/>
+<text x="547.0" y="458.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Fetches 10 feeds</text>
+<text x="547.0" y="476.0" text-anchor="middle" font-size="10.5" fill="#48484f">rss-parser · Zod-validated</text>
+<text x="547.0" y="491.0" text-anchor="middle" font-size="10.5" fill="#48484f">last 35 days · dedupe by guid</text>
+<text x="547.0" y="506.0" text-anchor="middle" font-size="10.5" fill="#48484f">title · notes · link · transcript</text>
+<rect x="666.0" y="546.0" width="198" height="88" rx="14" fill="#000" opacity="0.07" filter="url(#soft)"/>
+<rect x="666.0" y="540.0" width="198" height="88" rx="14" fill="#ffffff"/>
+<rect x="666.0" y="540.0" width="198" height="88" rx="14" fill="#2b8597" fill-opacity="0.045" stroke="#2b8597" stroke-opacity="0.4" stroke-width="1"/>
+<circle cx="850.0" cy="554.0" r="3" fill="#2b8597" fill-opacity=".9"/>
+<text x="765.0" y="562.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Stores everything</text>
+<text x="765.0" y="580.0" text-anchor="middle" font-size="10.5" fill="#48484f">shows · episodes · topic_canon</text>
+<text x="765.0" y="595.0" text-anchor="middle" font-size="10.5" fill="#48484f">briefs by week · runs log</text>
+<text x="765.0" y="610.0" text-anchor="middle" font-size="10.5" fill="#48484f">idempotent: skips processed</text>
+<rect x="884.0" y="754.0" width="198" height="88" rx="14" fill="#000" opacity="0.07" filter="url(#soft)"/>
+<rect x="884.0" y="748.0" width="198" height="88" rx="14" fill="#ffffff"/>
+<rect x="884.0" y="748.0" width="198" height="88" rx="14" fill="#6b57d1" fill-opacity="0.045" stroke="#6b57d1" stroke-opacity="0.4" stroke-width="1"/>
+<circle cx="1068.0" cy="762.0" r="3" fill="#6b57d1" fill-opacity=".9"/>
+<text x="983.0" y="770.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Extracts facts</text>
+<text x="983.0" y="788.0" text-anchor="middle" font-size="10.5" fill="#48484f">guests · 2–5 topics · brands</text>
+<text x="983.0" y="803.0" text-anchor="middle" font-size="10.5" fill="#48484f">JSON schema · empty &gt; guess</text>
+<text x="983.0" y="818.0" text-anchor="middle" font-size="10.5" fill="#48484f">5 episodes/call · retry+backoff</text>
+<rect x="1102.0" y="650.0" width="198" height="88" rx="14" fill="#000" opacity="0.07" filter="url(#soft)"/>
+<rect x="1102.0" y="644.0" width="198" height="88" rx="14" fill="#ffffff"/>
+<rect x="1102.0" y="644.0" width="198" height="88" rx="14" fill="#b67a1c" fill-opacity="0.045" stroke="#b67a1c" stroke-opacity="0.4" stroke-width="1"/>
+<circle cx="1286.0" cy="658.0" r="3" fill="#b67a1c" fill-opacity=".9"/>
+<text x="1201.0" y="666.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Code does the maths</text>
+<text x="1201.0" y="684.0" text-anchor="middle" font-size="10.5" fill="#48484f">names merged: Levenshtein ≤ 2</text>
+<text x="1201.0" y="699.0" text-anchor="middle" font-size="10.5" fill="#48484f">guests on ≥ 2 shows · 30 days</text>
+<text x="1201.0" y="714.0" text-anchor="middle" font-size="10.5" fill="#48484f">topics ≥ 2 shows · 7d · paid brands</text>
+<rect x="1320.0" y="754.0" width="198" height="88" rx="14" fill="#000" opacity="0.07" filter="url(#soft)"/>
+<rect x="1320.0" y="748.0" width="198" height="88" rx="14" fill="#ffffff"/>
+<rect x="1320.0" y="748.0" width="198" height="88" rx="14" fill="#6b57d1" fill-opacity="0.045" stroke="#6b57d1" stroke-opacity="0.4" stroke-width="1"/>
+<circle cx="1504.0" cy="762.0" r="3" fill="#6b57d1" fill-opacity=".9"/>
+<text x="1419.0" y="770.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Writes the brief</text>
+<text x="1419.0" y="788.0" text-anchor="middle" font-size="10.5" fill="#48484f">1 call merges topic labels</text>
+<text x="1419.0" y="803.0" text-anchor="middle" font-size="10.5" fill="#48484f">3-line summary + next steps</text>
+<text x="1419.0" y="818.0" text-anchor="middle" font-size="10.5" fill="#48484f">cites items by ref id only</text>
+<rect x="1538.0" y="650.0" width="198" height="88" rx="14" fill="#000" opacity="0.07" filter="url(#soft)"/>
+<rect x="1538.0" y="644.0" width="198" height="88" rx="14" fill="#ffffff"/>
+<rect x="1538.0" y="644.0" width="198" height="88" rx="14" fill="#b67a1c" fill-opacity="0.045" stroke="#b67a1c" stroke-opacity="0.4" stroke-width="1"/>
+<circle cx="1722.0" cy="658.0" r="3" fill="#b67a1c" fill-opacity=".9"/>
+<text x="1637.0" y="666.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Renders the brief</text>
+<text x="1637.0" y="684.0" text-anchor="middle" font-size="10.5" fill="#48484f">code attaches episode links</text>
+<text x="1637.0" y="699.0" text-anchor="middle" font-size="10.5" fill="#48484f">Markdown + email HTML</text>
+<text x="1637.0" y="714.0" text-anchor="middle" font-size="10.5" fill="#48484f">saved to Postgres by week</text>
+<rect x="1538.0" y="858.0" width="198" height="88" rx="14" fill="#000" opacity="0.07" filter="url(#soft)"/>
+<rect x="1538.0" y="852.0" width="198" height="88" rx="14" fill="#ffffff"/>
+<rect x="1538.0" y="852.0" width="198" height="88" rx="14" fill="#c25a3c" fill-opacity="0.045" stroke="#c25a3c" stroke-opacity="0.4" stroke-width="1"/>
+<circle cx="1722.0" cy="866.0" r="3" fill="#c25a3c" fill-opacity=".9"/>
+<text x="1637.0" y="874.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Delivers</text>
+<text x="1637.0" y="892.0" text-anchor="middle" font-size="10.5" fill="#48484f">Resend email to inbox</text>
+<text x="1637.0" y="907.0" text-anchor="middle" font-size="10.5" fill="#48484f">web: / · /archive · /shows</text>
+<text x="1637.0" y="922.0" text-anchor="middle" font-size="10.5" fill="#48484f">every item links to sources</text>
+<rect x="1538.0" y="234.0" width="198" height="88" rx="14" fill="#000" opacity="0.07" filter="url(#soft)"/>
+<rect x="1538.0" y="228.0" width="198" height="88" rx="14" fill="#ffffff"/>
+<rect x="1538.0" y="228.0" width="198" height="88" rx="14" fill="#c8643a" fill-opacity="0.045" stroke="#c8643a" stroke-opacity="0.4" stroke-width="1"/>
+<circle cx="1722.0" cy="242.0" r="3" fill="#c8643a" fill-opacity=".9"/>
+<text x="1637.0" y="250.0" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="#1d1d1f">Reads the Monday brief</text>
+<text x="1637.0" y="268.0" text-anchor="middle" font-size="10.5" fill="#48484f">book guests on media rounds</text>
+<text x="1637.0" y="283.0" text-anchor="middle" font-size="10.5" fill="#48484f">ride or counter topics</text>
+<text x="1637.0" y="298.0" text-anchor="middle" font-size="10.5" fill="#48484f">build the sponsor pitch list</text>
+<path d="M428.0,272.0 H587.0 V436.0" fill="none" stroke="#a1a1a6" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+<g><rect x="470.9" y="262.0" width="54.2" height="20" rx="10" fill="#ffffff" stroke="rgba(0,0,0,0.14)"/><text x="498.0" y="275.6" text-anchor="middle" font-size="10" fill="#48484f">10 shows</text></g>
+<path d="M428.0,376.0 H507.0 V436.0" fill="none" stroke="#a1a1a6" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+<g><rect x="438.15" y="366.0" width="83.7" height="20" rx="10" fill="#ffffff" stroke="rgba(0,0,0,0.14)"/><text x="480.0" y="379.6" text-anchor="middle" font-size="10" fill="#48484f">runs pipeline</text></g>
+<path d="M646.0,480.0 H765.0 V540.0" fill="none" stroke="#a1a1a6" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+<g><rect x="665.1" y="470.0" width="77.80000000000001" height="20" rx="10" fill="#ffffff" stroke="rgba(0,0,0,0.14)"/><text x="704.0" y="483.6" text-anchor="middle" font-size="10" fill="#48484f">new episodes</text></g>
+<path d="M805.0,628.0 V792.0 H884.0" fill="none" stroke="#a1a1a6" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+<g><rect x="754.3" y="706.0" width="101.4" height="20" rx="10" fill="#ffffff" stroke="rgba(0,0,0,0.14)"/><text x="805.0" y="719.6" text-anchor="middle" font-size="10" fill="#48484f">unprocessed only</text></g>
+<path d="M1082.0,792.0 H1201.0 V732.0" fill="none" stroke="#a1a1a6" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+<g><rect x="1097.2" y="782.0" width="89.60000000000001" height="20" rx="10" fill="#ffffff" stroke="rgba(0,0,0,0.14)"/><text x="1142.0" y="795.6" text-anchor="middle" font-size="10" fill="#48484f">validated JSON</text></g>
+<path d="M1300.0,688.0 H1419.0 V748.0" fill="none" stroke="#a1a1a6" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+<g><rect x="1303.4" y="678.0" width="113.2" height="20" rx="10" fill="#ffffff" stroke="rgba(0,0,0,0.14)"/><text x="1360.0" y="691.6" text-anchor="middle" font-size="10" fill="#48484f">analysis + ref ids</text></g>
+<path d="M1518.0,792.0 H1577.0 V732.0" fill="none" stroke="#a1a1a6" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+<g><rect x="1538.1" y="740.0" width="77.80000000000001" height="20" rx="10" fill="#ffffff" stroke="rgba(0,0,0,0.14)"/><text x="1577.0" y="753.6" text-anchor="middle" font-size="10" fill="#48484f">prose by ref</text></g>
+<path d="M1637.0,732.0 V852.0" fill="none" stroke="#a1a1a6" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+<g><rect x="1624.0" y="782.0" width="66.0" height="20" rx="10" fill="#ffffff" stroke="rgba(0,0,0,0.14)"/><text x="1657.0" y="795.6" text-anchor="middle" font-size="10" fill="#48484f">HTML brief</text></g>
+<path d="M1736.0,896.0 H1768 V272.0 H1739.0" fill="none" stroke="#a1a1a6" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+<g transform="rotate(-90 1768 584.0)"><rect x="1723.2" y="574.0" width="89.60000000000001" height="20" rx="10" fill="#ffffff" stroke="rgba(0,0,0,0.14)"/><text x="1768" y="587.6" text-anchor="middle" font-size="10" fill="#48484f">by 6:00 AM IST</text></g>
+<path d="M864.0,584.0 H1201.0 V644.0" fill="none" stroke="#a1a1a6" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+<g><rect x="990.65" y="574.0" width="83.7" height="20" rx="10" fill="#ffffff" stroke="rgba(0,0,0,0.14)"/><text x="1032.5" y="587.6" text-anchor="middle" font-size="10" fill="#48484f">35-day window</text></g>
+<rect x="299.4" y="974" width="159.39999999999998" height="28" rx="14" fill="#b67a1c" fill-opacity="0.07" stroke="#b67a1c" stroke-opacity="0.28"/>
+<circle cx="314.4" cy="988" r="3" fill="#b67a1c"/>
+<text x="324.4" y="992" font-size="12" font-weight="500" fill="#48484f">Code does the maths</text>
+<rect x="470.79999999999995" y="974" width="232.0" height="28" rx="14" fill="#6b57d1" fill-opacity="0.07" stroke="#6b57d1" stroke-opacity="0.28"/>
+<circle cx="485.79999999999995" cy="988" r="3" fill="#6b57d1"/>
+<text x="495.79999999999995" y="992" font-size="12" font-weight="500" fill="#48484f">Gemini Flash does the language</text>
+<rect x="714.8" y="974" width="152.8" height="28" rx="14" fill="#2b8597" fill-opacity="0.07" stroke="#2b8597" stroke-opacity="0.28"/>
+<circle cx="729.8" cy="988" r="3" fill="#2b8597"/>
+<text x="739.8" y="992" font-size="12" font-weight="500" fill="#48484f">Postgres remembers</text>
+<rect x="879.5999999999999" y="974" width="172.6" height="28" rx="14" fill="#1e9a78" fill-opacity="0.07" stroke="#1e9a78" stroke-opacity="0.28"/>
+<circle cx="894.5999999999999" cy="988" r="3" fill="#1e9a78"/>
+<text x="904.5999999999999" y="992" font-size="12" font-weight="500" fill="#48484f">Live RSS, no scraping</text>
+<rect x="1064.1999999999998" y="974" width="146.2" height="28" rx="14" fill="#c8643a" fill-opacity="0.07" stroke="#c8643a" stroke-opacity="0.28"/>
+<circle cx="1079.1999999999998" cy="988" r="3" fill="#c8643a"/>
+<text x="1089.1999999999998" y="992" font-size="12" font-weight="500" fill="#48484f">Aditya acts on it</text>
+<rect x="1222.3999999999999" y="974" width="278.2" height="28" rx="14" fill="#c25a3c" fill-opacity="0.07" stroke="#c25a3c" stroke-opacity="0.28"/>
+<circle cx="1237.3999999999999" cy="988" r="3" fill="#c25a3c"/>
+<text x="1247.3999999999999" y="992" font-size="12" font-weight="500" fill="#48484f">Every claim links to a source episode</text>
+<text x="900.0" y="1030" text-anchor="middle" font-size="11.5" fill="#a1a1a6">Next.js 16 on Vercel · Neon Postgres · Google Gemini Flash (@google/genai) · Resend · Vercel Cron</text>
 </svg>

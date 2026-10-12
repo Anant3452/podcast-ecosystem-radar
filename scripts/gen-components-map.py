@@ -1,8 +1,12 @@
-"""Generate docs/components_map.svg as a swimlane components map, styled like the web UI (dark-first)."""
+"""Generate the swimlane components map, styled like the web UI.
+
+Usage: python3 scripts/gen-components-map.py OUT.svg [light|dark]   (default: light)
+"""
 import sys
 from html import escape
 
 OUT = sys.argv[1]
+THEME = sys.argv[2] if len(sys.argv) > 2 else "light"  # "light" | "dark"
 W, H = 1800, 1060
 X0, ACTOR_W, COL_W = 50, 170, 218
 TABLE_R = X0 + ACTOR_W + 7 * COL_W  # 1746
@@ -11,32 +15,40 @@ ROW_Y0, ROW_H = HDR_Y + HDR_H, 104
 FONT = "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
 MONO = "ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
 
-# Design tokens mirrored from app/globals.css
-BG, BG_RAISED = "#0a0a0c", "#121216"
-BORDER, BORDER_STRONG = "rgba(255,255,255,0.08)", "rgba(255,255,255,0.16)"
-TEXT, TEXT_2, MUTED, FAINT = "#ededef", "#b4b4bc", "#8a8a93", "#5c5c66"
-ACCENT = "#e08a5f"
+# Design tokens. Dark mirrors app/globals.css; light is the same system on white
+# (Apple-style neutrals, accents deepened for contrast on a light canvas).
+THEMES = {
+    "dark": dict(
+        BG="#0a0a0c", BG_RAISED="#121216", BORDER="rgba(255,255,255,0.08)", BORDER_STRONG="rgba(255,255,255,0.16)",
+        TEXT="#ededef", TEXT_2="#b4b4bc", MUTED="#8a8a93", FAINT="#5c5c66", INK="#ffffff",
+        SHADOW=0.35, GLOW=0.16, GLOW2=0.07, TINT=1.0,
+        TONE=dict(human="#e08a5f", trigger="#8ea4d2", data="#5cc8a8", store="#6fb3c2", code="#e5b06a", ai="#a99cf0", deliver="#e5926a"),
+    ),
+    "light": dict(
+        BG="#fbfbfd", BG_RAISED="#ffffff", BORDER="rgba(0,0,0,0.08)", BORDER_STRONG="rgba(0,0,0,0.14)",
+        TEXT="#1d1d1f", TEXT_2="#48484f", MUTED="#86868b", FAINT="#a1a1a6", INK="#000000",
+        SHADOW=0.07, GLOW=0.10, GLOW2=0.06, TINT=1.0,
+        TONE=dict(human="#c8643a", trigger="#4a6fb5", data="#1e9a78", store="#2b8597", code="#b67a1c", ai="#6b57d1", deliver="#c25a3c"),
+    ),
+}
+T = THEMES[THEME]
+BG, BG_RAISED, BORDER, BORDER_STRONG = T["BG"], T["BG_RAISED"], T["BORDER"], T["BORDER_STRONG"]
+TEXT, TEXT_2, MUTED, FAINT, INK = T["TEXT"], T["TEXT_2"], T["MUTED"], T["FAINT"], T["INK"]
+TONE = T["TONE"]
+ACCENT = TONE["human"]
 
 COLS = ["Trigger", "Input", "Context", "AI · Extract", "Processing", "AI · Write", "Output"]
 ROWS = [  # name, subtitle, band colour
-    ("Aditya", "Podcast host", "#e08a5f"),
-    ("Vercel Cron", "Scheduler + admin", "#8ea4d2"),
-    ("RSS Feeds", "Live data", "#5cc8a8"),
-    ("Postgres", "Neon · memory", "#6fb3c2"),
-    ("Code", "Next.js server", "#e5b06a"),
-    ("Gemini API", "Flash · language", "#a99cf0"),
-    ("Delivery", "Resend + web UI", "#e5926a"),
+    ("Aditya", "Podcast host", TONE["human"]),
+    ("Vercel Cron", "Scheduler + admin", TONE["trigger"]),
+    ("RSS Feeds", "Live data", TONE["data"]),
+    ("Postgres", "Neon · memory", TONE["store"]),
+    ("Code", "Next.js server", TONE["code"]),
+    ("Gemini API", "Flash · language", TONE["ai"]),
+    ("Delivery", "Resend + web UI", TONE["deliver"]),
 ]
 # accent per box kind (boxes are dark glass with an accent hairline + dot)
-KIND = {
-    "human": "#e08a5f",
-    "trigger": "#8ea4d2",
-    "data": "#5cc8a8",
-    "store": "#6fb3c2",
-    "code": "#e5b06a",
-    "ai": "#a99cf0",
-    "deliver": "#e5926a",
-}
+KIND = TONE
 
 def col_cx(c): return X0 + ACTOR_W + c * COL_W + COL_W / 2
 def row_cy(r): return ROW_Y0 + r * ROW_H + ROW_H / 2
@@ -50,9 +62,9 @@ def box(bid, r, c, kind, title, lines):
     boxes[bid] = (cx, cy)
     accent = KIND[kind]
     x, y = cx - BW / 2, cy - BH / 2
-    parts.append(f'<rect x="{x}" y="{y + 6}" width="{BW}" height="{BH}" rx="14" fill="#000" opacity=".35" filter="url(#soft)"/>')
+    parts.append(f'<rect x="{x}" y="{y + 6}" width="{BW}" height="{BH}" rx="14" fill="#000" opacity="{T['SHADOW']}" filter="url(#soft)"/>')
     parts.append(f'<rect x="{x}" y="{y}" width="{BW}" height="{BH}" rx="14" fill="{BG_RAISED}"/>')
-    parts.append(f'<rect x="{x}" y="{y}" width="{BW}" height="{BH}" rx="14" fill="{accent}" fill-opacity=".06" stroke="{accent}" stroke-opacity=".45" stroke-width="1"/>')
+    parts.append(f'<rect x="{x}" y="{y}" width="{BW}" height="{BH}" rx="14" fill="{accent}" fill-opacity="{.06 if THEME == 'dark' else .045}" stroke="{accent}" stroke-opacity="{.45 if THEME == 'dark' else .4}" stroke-width="1"/>')
     parts.append(f'<circle cx="{x + BW - 14}" cy="{y + 14}" r="3" fill="{accent}" fill-opacity=".9"/>')
     ty = y + 22
     parts.append(f'<text x="{cx}" y="{ty}" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="{TEXT}">{escape(title)}</text>')
@@ -78,8 +90,8 @@ svg = [
     '<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">'
     f'<path d="M0,0 L10,5 L0,10 z" fill="{FAINT}"/></marker>'
     '<filter id="soft" x="-20%" y="-20%" width="140%" height="160%"><feGaussianBlur stdDeviation="8"/></filter>'
-    f'<radialGradient id="glowA" cx="15%" cy="0%" r="55%"><stop offset="0" stop-color="{ACCENT}" stop-opacity=".16"/><stop offset="1" stop-color="{ACCENT}" stop-opacity="0"/></radialGradient>'
-    '<radialGradient id="glowB" cx="88%" cy="4%" r="40%"><stop offset="0" stop-color="#5cc8a8" stop-opacity=".07"/><stop offset="1" stop-color="#5cc8a8" stop-opacity="0"/></radialGradient>'
+    f'<radialGradient id="glowA" cx="15%" cy="0%" r="55%"><stop offset="0" stop-color="{ACCENT}" stop-opacity="{T['GLOW']}"/><stop offset="1" stop-color="{ACCENT}" stop-opacity="0"/></radialGradient>'
+    f'<radialGradient id="glowB" cx="88%" cy="4%" r="40%"><stop offset="0" stop-color="{TONE['data']}" stop-opacity="{T['GLOW2']}"/><stop offset="1" stop-color="{TONE['data']}" stop-opacity="0"/></radialGradient>'
     '</defs>',
     f'<rect width="{W}" height="{H}" fill="{BG}"/>',
     f'<rect width="{W}" height="{H}" fill="url(#glowA)"/>',
@@ -92,7 +104,7 @@ svg = [
 
 # glass table surface
 TABLE_H = HDR_H + 7 * ROW_H
-svg.append(f'<rect x="{X0}" y="{HDR_Y}" width="{TABLE_R - X0}" height="{TABLE_H}" rx="20" fill="#ffffff" fill-opacity=".025" stroke="{BORDER}"/>')
+svg.append(f'<rect x="{X0}" y="{HDR_Y}" width="{TABLE_R - X0}" height="{TABLE_H}" rx="20" fill="{BG_RAISED}" fill-opacity="{.025 if THEME == 'dark' else .9}" stroke="{BORDER}"/>')
 svg.append(f'<clipPath id="tbl"><rect x="{X0}" y="{HDR_Y}" width="{TABLE_R - X0}" height="{TABLE_H}" rx="20"/></clipPath>')
 
 # header row: small mono uppercase labels, like the UI eyebrows
@@ -108,8 +120,8 @@ for c, name in enumerate(COLS):
 svg.append('<g clip-path="url(#tbl)">')
 for r, (name, sub, tone) in enumerate(ROWS):
     y = ROW_Y0 + r * ROW_H
-    svg.append(f'<rect x="{X0 + ACTOR_W}" y="{y}" width="{TABLE_R - X0 - ACTOR_W}" height="{ROW_H}" fill="{tone}" fill-opacity="{.035 if r % 2 == 0 else .02}"/>')
-    svg.append(f'<rect x="{X0}" y="{y}" width="{ACTOR_W}" height="{ROW_H}" fill="#ffffff" fill-opacity=".02"/>')
+    svg.append(f'<rect x="{X0 + ACTOR_W}" y="{y}" width="{TABLE_R - X0 - ACTOR_W}" height="{ROW_H}" fill="{tone}" fill-opacity="{(.035 if r % 2 == 0 else .02) if THEME == 'dark' else (.045 if r % 2 == 0 else .025)}"/>')
+    svg.append(f'<rect x="{X0}" y="{y}" width="{ACTOR_W}" height="{ROW_H}" fill="{INK}" fill-opacity="{.02 if THEME == 'dark' else .015}"/>')
     svg.append(f'<rect x="{X0 + 18}" y="{y + ROW_H / 2 - 16}" width="2.5" height="32" rx="1.25" fill="{tone}"/>')
     if r < 6:
         svg.append(f'<line x1="{X0}" y1="{y + ROW_H}" x2="{TABLE_R}" y2="{y + ROW_H}" stroke="{BORDER}"/>')
@@ -119,7 +131,7 @@ svg.append('</g>')
 svg.append(f'<line x1="{X0 + ACTOR_W}" y1="{HDR_Y}" x2="{X0 + ACTOR_W}" y2="{HDR_Y + TABLE_H}" stroke="{BORDER}"/>')
 for c in range(1, 7):
     x = X0 + ACTOR_W + c * COL_W
-    svg.append(f'<line x1="{x}" y1="{ROW_Y0}" x2="{x}" y2="{ROW_Y0 + 7 * ROW_H}" stroke="#ffffff" stroke-opacity=".035"/>')
+    svg.append(f'<line x1="{x}" y1="{ROW_Y0}" x2="{x}" y2="{ROW_Y0 + 7 * ROW_H}" stroke="{INK}" stroke-opacity="{.035 if THEME == 'dark' else .04}"/>')
 
 # ---------- boxes ----------
 box("cfg", 0, 0, "human", "Edits config (no code)", ["config/shows.json · 10 shows", "enabled · self_brands", "settings.json · 30d / 7d windows"])
@@ -160,18 +172,18 @@ svg += parts
 
 # ---------- legend ----------
 legend = [
-    ("Code does the maths", "#e5b06a"),
-    ("Gemini Flash does the language", "#a99cf0"),
-    ("Postgres remembers", "#6fb3c2"),
-    ("Live RSS, no scraping", "#5cc8a8"),
-    ("Aditya acts on it", "#e08a5f"),
-    ("Every claim links to a source episode", "#e5926a"),
+    ("Code does the maths", TONE["code"]),
+    ("Gemini Flash does the language", TONE["ai"]),
+    ("Postgres remembers", TONE["store"]),
+    ("Live RSS, no scraping", TONE["data"]),
+    ("Aditya acts on it", TONE["human"]),
+    ("Every claim links to a source episode", TONE["deliver"]),
 ]
 widths = [34 + len(t) * 6.6 for t, _ in legend]
 gap = 12
 x = (W - (sum(widths) + gap * (len(widths) - 1))) / 2
 for (t, tone), w in zip(legend, widths):
-    svg.append(f'<rect x="{x}" y="974" width="{w}" height="28" rx="14" fill="{tone}" fill-opacity=".1" stroke="{tone}" stroke-opacity=".3"/>')
+    svg.append(f'<rect x="{x}" y="974" width="{w}" height="28" rx="14" fill="{tone}" fill-opacity="{.1 if THEME == 'dark' else .07}" stroke="{tone}" stroke-opacity="{.3 if THEME == 'dark' else .28}"/>')
     svg.append(f'<circle cx="{x + 15}" cy="988" r="3" fill="{tone}"/>')
     svg.append(f'<text x="{x + 25}" y="992" font-size="12" font-weight="500" fill="{TEXT_2}">{escape(t)}</text>')
     x += w + gap
