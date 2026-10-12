@@ -1,4 +1,4 @@
-"""Generate docs/components_map.svg as a swimlane components map."""
+"""Generate docs/components_map.svg as a swimlane components map, styled like the web UI (dark-first)."""
 import sys
 from html import escape
 
@@ -8,27 +8,34 @@ X0, ACTOR_W, COL_W = 50, 170, 218
 TABLE_R = X0 + ACTOR_W + 7 * COL_W  # 1746
 HDR_Y, HDR_H = 170, 50
 ROW_Y0, ROW_H = HDR_Y + HDR_H, 104
-FONT = "Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
+FONT = "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif"
+MONO = "ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+
+# Design tokens mirrored from app/globals.css
+BG, BG_RAISED = "#0a0a0c", "#121216"
+BORDER, BORDER_STRONG = "rgba(255,255,255,0.08)", "rgba(255,255,255,0.16)"
+TEXT, TEXT_2, MUTED, FAINT = "#ededef", "#b4b4bc", "#8a8a93", "#5c5c66"
+ACCENT = "#e08a5f"
 
 COLS = ["Trigger", "Input", "Context", "AI · Extract", "Processing", "AI · Write", "Output"]
 ROWS = [  # name, subtitle, band colour
-    ("Aditya", "Podcast host", "#ece6f8"),
-    ("Vercel Cron", "Scheduler + admin", "#e2eaf7"),
-    ("RSS Feeds", "Live data", "#e6efe0"),
-    ("Postgres", "Neon · memory", "#e0ecee"),
-    ("Code", "Next.js server", "#fbecd9"),
-    ("Gemini API", "Flash · language", "#f8e0e5"),
-    ("Delivery", "Resend + web UI", "#f5eed6"),
+    ("Aditya", "Podcast host", "#e08a5f"),
+    ("Vercel Cron", "Scheduler + admin", "#8ea4d2"),
+    ("RSS Feeds", "Live data", "#5cc8a8"),
+    ("Postgres", "Neon · memory", "#6fb3c2"),
+    ("Code", "Next.js server", "#e5b06a"),
+    ("Gemini API", "Flash · language", "#a99cf0"),
+    ("Delivery", "Resend + web UI", "#e5926a"),
 ]
-# stroke / fill per box kind
+# accent per box kind (boxes are dark glass with an accent hairline + dot)
 KIND = {
-    "human": ("#7c5cc4", "#f4f0fc"),
-    "trigger": ("#4a72b8", "#eef3fb"),
-    "data": ("#5f8a4e", "#f1f7ed"),
-    "store": ("#4d8790", "#eef6f7"),
-    "code": ("#c98a2b", "#fff6ea"),
-    "ai": ("#c4526b", "#fdf0f3"),
-    "deliver": ("#b08a1e", "#fdf8e8"),
+    "human": "#e08a5f",
+    "trigger": "#8ea4d2",
+    "data": "#5cc8a8",
+    "store": "#6fb3c2",
+    "code": "#e5b06a",
+    "ai": "#a99cf0",
+    "deliver": "#e5926a",
 }
 
 def col_cx(c): return X0 + ACTOR_W + c * COL_W + COL_W / 2
@@ -41,24 +48,27 @@ parts = []
 def box(bid, r, c, kind, title, lines):
     cx, cy = col_cx(c), row_cy(r)
     boxes[bid] = (cx, cy)
-    stroke, fill = KIND[kind]
+    accent = KIND[kind]
     x, y = cx - BW / 2, cy - BH / 2
-    parts.append(f'<rect x="{x}" y="{y}" width="{BW}" height="{BH}" rx="9" fill="{fill}" stroke="{stroke}" stroke-width="1.6"/>')
-    ty = y + 21
-    parts.append(f'<text x="{cx}" y="{ty}" text-anchor="middle" font-size="13" font-weight="700" fill="#2b2420">{escape(title)}</text>')
+    parts.append(f'<rect x="{x}" y="{y + 6}" width="{BW}" height="{BH}" rx="14" fill="#000" opacity=".35" filter="url(#soft)"/>')
+    parts.append(f'<rect x="{x}" y="{y}" width="{BW}" height="{BH}" rx="14" fill="{BG_RAISED}"/>')
+    parts.append(f'<rect x="{x}" y="{y}" width="{BW}" height="{BH}" rx="14" fill="{accent}" fill-opacity=".06" stroke="{accent}" stroke-opacity=".45" stroke-width="1"/>')
+    parts.append(f'<circle cx="{x + BW - 14}" cy="{y + 14}" r="3" fill="{accent}" fill-opacity=".9"/>')
+    ty = y + 22
+    parts.append(f'<text x="{cx}" y="{ty}" text-anchor="middle" font-size="13" font-weight="600" letter-spacing="-0.2" fill="{TEXT}">{escape(title)}</text>')
     for i, ln in enumerate(lines):
-        parts.append(f'<text x="{cx}" y="{ty + 17 + i * 15}" text-anchor="middle" font-size="10.5" fill="#5a5048">{escape(ln)}</text>')
+        parts.append(f'<text x="{cx}" y="{ty + 18 + i * 15}" text-anchor="middle" font-size="10.5" fill="{TEXT_2}">{escape(ln)}</text>')
 
 def pill(x, y, text, rotate=False):
     w = 7 + len(text) * 5.9
     tr = f' transform="rotate(-90 {x} {y})"' if rotate else ""
     parts.append(
-        f'<g{tr}><rect x="{x - w / 2}" y="{y - 10}" width="{w}" height="20" rx="10" fill="#ffffff" stroke="#c9bfb2"/>'
-        f'<text x="{x}" y="{y + 3.6}" text-anchor="middle" font-size="10" fill="#5a5048">{escape(text)}</text></g>'
+        f'<g{tr}><rect x="{x - w / 2}" y="{y - 10}" width="{w}" height="20" rx="10" fill="{BG_RAISED}" stroke="{BORDER_STRONG}"/>'
+        f'<text x="{x}" y="{y + 3.6}" text-anchor="middle" font-size="10" fill="{TEXT_2}">{escape(text)}</text></g>'
     )
 
 def arrow(d, label=None, at=None, rotate=False):
-    parts.append(f'<path d="{d}" fill="none" stroke="#6e6258" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ah)"/>')
+    parts.append(f'<path d="{d}" fill="none" stroke="{FAINT}" stroke-width="1.4" stroke-dasharray="4 4" marker-end="url(#ah)"/>')
     if label:
         pill(*at, label, rotate)
 
@@ -66,33 +76,50 @@ def arrow(d, label=None, at=None, rotate=False):
 svg = [
     f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" font-family="{FONT}">',
     '<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">'
-    '<path d="M0,0 L10,5 L0,10 z" fill="#6e6258"/></marker></defs>',
-    f'<rect width="{W}" height="{H}" fill="#f3efe9"/>',
-    f'<rect x="20" y="20" width="{W - 40}" height="{H - 40}" rx="18" fill="#fbf9f5" stroke="#e4ddd2"/>',
-    f'<text x="{W / 2}" y="86" text-anchor="middle" font-size="31" font-weight="800" fill="#2b2420">Podcast Ecosystem Radar · Components Map</text>',
-    f'<text x="{W / 2}" y="120" text-anchor="middle" font-size="15" fill="#6e6258">'
+    f'<path d="M0,0 L10,5 L0,10 z" fill="{FAINT}"/></marker>'
+    '<filter id="soft" x="-20%" y="-20%" width="140%" height="160%"><feGaussianBlur stdDeviation="8"/></filter>'
+    f'<radialGradient id="glowA" cx="15%" cy="0%" r="55%"><stop offset="0" stop-color="{ACCENT}" stop-opacity=".16"/><stop offset="1" stop-color="{ACCENT}" stop-opacity="0"/></radialGradient>'
+    '<radialGradient id="glowB" cx="88%" cy="4%" r="40%"><stop offset="0" stop-color="#5cc8a8" stop-opacity=".07"/><stop offset="1" stop-color="#5cc8a8" stop-opacity="0"/></radialGradient>'
+    '</defs>',
+    f'<rect width="{W}" height="{H}" fill="{BG}"/>',
+    f'<rect width="{W}" height="{H}" fill="url(#glowA)"/>',
+    f'<rect width="{W}" height="{H}" fill="url(#glowB)"/>',
+    f'<text x="{X0}" y="62" font-family="{MONO}" font-size="12" letter-spacing="2.2" fill="{MUTED}">PODCAST ECOSYSTEM RADAR</text>',
+    f'<text x="{X0}" y="108" font-size="40" font-weight="600" letter-spacing="-1.4" fill="{TEXT}">Components map<tspan fill="{MUTED}">, end to end.</tspan></text>',
+    f'<text x="{X0}" y="140" font-size="15" fill="{MUTED}">'
     '10 live RSS feeds → Gemini extracts facts → code finds overlaps → Gemini writes → brief in the inbox by 6:00 AM IST Monday</text>',
 ]
 
-# header row
-svg.append(f'<rect x="{X0}" y="{HDR_Y}" width="{TABLE_R - X0}" height="{HDR_H}" rx="8" fill="#6b5b4d"/>')
-svg.append(f'<text x="{X0 + ACTOR_W / 2}" y="{HDR_Y + 31}" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">Actor</text>')
-for c, name in enumerate(COLS):
-    svg.append(f'<text x="{col_cx(c)}" y="{HDR_Y + 31}" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">{escape(name)}</text>')
+# glass table surface
+TABLE_H = HDR_H + 7 * ROW_H
+svg.append(f'<rect x="{X0}" y="{HDR_Y}" width="{TABLE_R - X0}" height="{TABLE_H}" rx="20" fill="#ffffff" fill-opacity=".025" stroke="{BORDER}"/>')
+svg.append(f'<clipPath id="tbl"><rect x="{X0}" y="{HDR_Y}" width="{TABLE_R - X0}" height="{TABLE_H}" rx="20"/></clipPath>')
 
-# bands + actor cells
-for r, (name, sub, band) in enumerate(ROWS):
+# header row: small mono uppercase labels, like the UI eyebrows
+svg.append(f'<line x1="{X0}" y1="{HDR_Y + HDR_H}" x2="{TABLE_R}" y2="{HDR_Y + HDR_H}" stroke="{BORDER}"/>')
+def eyebrow(x, label):
+    return (f'<text x="{x}" y="{HDR_Y + 30}" text-anchor="middle" font-family="{MONO}" font-size="11" '
+            f'letter-spacing="1.8" fill="{MUTED}">{escape(label.upper())}</text>')
+svg.append(eyebrow(X0 + ACTOR_W / 2, "Actor"))
+for c, name in enumerate(COLS):
+    svg.append(eyebrow(col_cx(c), name))
+
+# lanes: hairline separators, a whisper of each actor's accent, accent bar in the actor cell
+svg.append('<g clip-path="url(#tbl)">')
+for r, (name, sub, tone) in enumerate(ROWS):
     y = ROW_Y0 + r * ROW_H
-    svg.append(f'<rect x="{X0 + ACTOR_W}" y="{y}" width="{TABLE_R - X0 - ACTOR_W}" height="{ROW_H}" fill="{band}"/>')
-    svg.append(f'<rect x="{X0}" y="{y}" width="{ACTOR_W}" height="{ROW_H}" fill="#7d6c5d"/>')
-    svg.append(f'<line x1="{X0}" y1="{y + ROW_H}" x2="{TABLE_R}" y2="{y + ROW_H}" stroke="#fbf9f5" stroke-width="2"/>')
-    svg.append(f'<text x="{X0 + ACTOR_W / 2}" y="{y + ROW_H / 2 - 2}" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">{escape(name)}</text>')
-    svg.append(f'<text x="{X0 + ACTOR_W / 2}" y="{y + ROW_H / 2 + 17}" text-anchor="middle" font-size="11" fill="#e8dfd4">({escape(sub)})</text>')
-# faint column guides
+    svg.append(f'<rect x="{X0 + ACTOR_W}" y="{y}" width="{TABLE_R - X0 - ACTOR_W}" height="{ROW_H}" fill="{tone}" fill-opacity="{.035 if r % 2 == 0 else .02}"/>')
+    svg.append(f'<rect x="{X0}" y="{y}" width="{ACTOR_W}" height="{ROW_H}" fill="#ffffff" fill-opacity=".02"/>')
+    svg.append(f'<rect x="{X0 + 18}" y="{y + ROW_H / 2 - 16}" width="2.5" height="32" rx="1.25" fill="{tone}"/>')
+    if r < 6:
+        svg.append(f'<line x1="{X0}" y1="{y + ROW_H}" x2="{TABLE_R}" y2="{y + ROW_H}" stroke="{BORDER}"/>')
+    svg.append(f'<text x="{X0 + 34}" y="{y + ROW_H / 2 - 2}" font-size="15" font-weight="600" letter-spacing="-0.2" fill="{TEXT}">{escape(name)}</text>')
+    svg.append(f'<text x="{X0 + 34}" y="{y + ROW_H / 2 + 16}" font-size="11" fill="{MUTED}">{escape(sub)}</text>')
+svg.append('</g>')
+svg.append(f'<line x1="{X0 + ACTOR_W}" y1="{HDR_Y}" x2="{X0 + ACTOR_W}" y2="{HDR_Y + TABLE_H}" stroke="{BORDER}"/>')
 for c in range(1, 7):
     x = X0 + ACTOR_W + c * COL_W
-    svg.append(f'<line x1="{x}" y1="{ROW_Y0}" x2="{x}" y2="{ROW_Y0 + 7 * ROW_H}" stroke="#ffffff" stroke-opacity=".55"/>')
-svg.append(f'<rect x="{X0}" y="{HDR_Y}" width="{TABLE_R - X0}" height="{HDR_H + 7 * ROW_H}" rx="8" fill="none" stroke="#6b5b4d" stroke-width="2"/>')
+    svg.append(f'<line x1="{x}" y1="{ROW_Y0}" x2="{x}" y2="{ROW_Y0 + 7 * ROW_H}" stroke="#ffffff" stroke-opacity=".035"/>')
 
 # ---------- boxes ----------
 box("cfg", 0, 0, "human", "Edits config (no code)", ["config/shows.json · 10 shows", "enabled · self_brands", "settings.json · 30d / 7d windows"])
@@ -101,7 +128,7 @@ box("rss", 2, 1, "data", "Fetches 10 feeds", ["rss-parser · Zod-validated", "la
 box("db", 3, 2, "store", "Stores everything", ["shows · episodes · topic_canon", "briefs by week · runs log", "idempotent: skips processed"])
 box("ext", 5, 3, "ai", "Extracts facts", ["guests · 2–5 topics · brands", "JSON schema · empty > guess", "5 episodes/call · retry+backoff"])
 box("math", 4, 4, "code", "Code does the maths", ["names merged: Levenshtein ≤ 2", "guests on ≥ 2 shows · 30 days", "topics ≥ 2 shows · 7d · paid brands"])
-box("write", 5, 5, "ai", "Merges topics, writes brief", ["1 call: canonical topic map", "3-line summary + actions", "cites items by ref id only"])
+box("write", 5, 5, "ai", "Writes the brief", ["1 call merges topic labels", "3-line summary + next steps", "cites items by ref id only"])
 box("render", 4, 6, "code", "Renders the brief", ["code attaches episode links", "Markdown + email HTML", "saved to Postgres by week"])
 box("deliver", 6, 6, "deliver", "Delivers", ["Resend email to inbox", "web: / · /archive · /shows", "every item links to sources"])
 box("read", 0, 6, "human", "Reads the Monday brief", ["book guests on media rounds", "ride or counter topics", "build the sponsor pitch list"])
@@ -133,23 +160,24 @@ svg += parts
 
 # ---------- legend ----------
 legend = [
-    ("Code does the maths", "#fff6ea", "#c98a2b"),
-    ("Gemini Flash does the language", "#fdf0f3", "#c4526b"),
-    ("Postgres remembers", "#eef6f7", "#4d8790"),
-    ("Live RSS, no scraping", "#f1f7ed", "#5f8a4e"),
-    ("Aditya acts on it", "#f4f0fc", "#7c5cc4"),
-    ("Every claim links to a source episode", "#fdf8e8", "#b08a1e"),
+    ("Code does the maths", "#e5b06a"),
+    ("Gemini Flash does the language", "#a99cf0"),
+    ("Postgres remembers", "#6fb3c2"),
+    ("Live RSS, no scraping", "#5cc8a8"),
+    ("Aditya acts on it", "#e08a5f"),
+    ("Every claim links to a source episode", "#e5926a"),
 ]
-widths = [24 + len(t) * 7.1 for t, _, _ in legend]
-gap = 14
+widths = [34 + len(t) * 6.6 for t, _ in legend]
+gap = 12
 x = (W - (sum(widths) + gap * (len(widths) - 1))) / 2
-for (t, fill, stroke), w in zip(legend, widths):
-    svg.append(f'<rect x="{x}" y="972" width="{w}" height="28" rx="14" fill="{fill}" stroke="{stroke}" stroke-width="1.5"/>')
-    svg.append(f'<text x="{x + w / 2}" y="990.5" text-anchor="middle" font-size="12.5" font-weight="600" fill="{stroke}">{escape(t)}</text>')
+for (t, tone), w in zip(legend, widths):
+    svg.append(f'<rect x="{x}" y="974" width="{w}" height="28" rx="14" fill="{tone}" fill-opacity=".1" stroke="{tone}" stroke-opacity=".3"/>')
+    svg.append(f'<circle cx="{x + 15}" cy="988" r="3" fill="{tone}"/>')
+    svg.append(f'<text x="{x + 25}" y="992" font-size="12" font-weight="500" fill="{TEXT_2}">{escape(t)}</text>')
     x += w + gap
 svg.append(
-    f'<text x="{W / 2}" y="1025" text-anchor="middle" font-size="12" fill="#8a7e72">'
-    "Stack: Next.js 16 on Vercel · Neon Postgres · Google Gemini Flash (@google/genai) · Resend · Vercel Cron</text>"
+    f'<text x="{W / 2}" y="1030" text-anchor="middle" font-size="11.5" fill="{FAINT}">'
+    "Next.js 16 on Vercel · Neon Postgres · Google Gemini Flash (@google/genai) · Resend · Vercel Cron</text>"
 )
 svg.append("</svg>")
 open(OUT, "w").write("\n".join(svg))
